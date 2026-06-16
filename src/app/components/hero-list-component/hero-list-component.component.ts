@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HeroService } from '../../services/hero-service.service';
 import { HeroCardComponent } from '../hero-card-component/hero-card-component.component';
 import { SearchBarComponent } from '../search-bar-component/search-bar-component.component';
+import { TeamBuilderComponent } from '../team-builder-component/team-builder-component.component';
 
 @Component({
   selector: 'List-hero',
-  imports: [HeroCardComponent, SearchBarComponent],
+  imports: [HeroCardComponent, SearchBarComponent, TeamBuilderComponent],
   templateUrl: './hero-list-component.component.html',
   styleUrl: './hero-list-component.component.css'
 })
@@ -31,6 +32,10 @@ ngOnInit(): void {
       }
       return h;
     })
+  }
+
+  get favoritos(){
+    return this.listhero.filter(h => h.favoritos === true);
   }
 
   filtrado(bustex: string){

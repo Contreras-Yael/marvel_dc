@@ -1,5 +1,11 @@
 <div>
+<h3> Favoritos {{favlist}}</h3>
 
+  @for (fav of favlist; track fav.id) {
+    <div>
+      <p>{{ fav.nombre}}</p>
+    </div>
 
+  }
 
 </div>

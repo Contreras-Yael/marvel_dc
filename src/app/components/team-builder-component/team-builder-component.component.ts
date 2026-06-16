@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-team-builder-component',
+  selector: 'teamhero',
   imports: [],
   templateUrl: './team-builder-component.component.html',
   styleUrl: './team-builder-component.component.css'
 })
 export class TeamBuilderComponent {
-
+  @Input() favlist: any[] = [];
 }
