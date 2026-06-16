@@ -1,1 +1,9 @@
-<p>hero-list-component works!</p>
+
+<div class="mosaico">
+@for (elemento of listhero; track elemento.id) {
+  <card-hero [carta]="elemento"></card-hero>
+}
+</div>
+
+
+

@@ -10,6 +10,7 @@ export class HeroService {
   public ListHero: any[] = [
     {
       id:1,
+      resume:"Inventor Tony Stark applies his genius for high-tech solutions to problems as Iron Man, the armored Avenger.",
       nombre:"Iron Man",
       tipo:"",
       poder:"",
@@ -19,6 +20,7 @@ export class HeroService {
     {
       id:2,
       nombre:"Batman",
+      resume:"Inventor Tony Stark applies his genius for high-tech solutions to problems as Iron Man, the armored Avenger.",
       tipo:"",
       poder:"",
       nivelPoder:12,
@@ -26,6 +28,7 @@ export class HeroService {
     },
     {
       id:3,
+      resume:"Inventor Tony Stark applies his genius for high-tech solutions to problems as Iron Man, the armored Avenger.",
       nombre:"Wonder Woman",
       tipo:"",
       poder:"",
@@ -34,6 +37,7 @@ export class HeroService {
     },
     {
       id:4,
+      resume:"Inventor Tony Stark applies his genius for high-tech solutions to problems as Iron Man, the armored Avenger.",
       nombre:"Superman",
       tipo:"",
       poder:"",

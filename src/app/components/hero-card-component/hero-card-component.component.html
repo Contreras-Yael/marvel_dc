@@ -1,1 +1,27 @@
-<p>hero-card-component works!</p>
+@if (carta) {
+<div class="card">
+  <img src="" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>{{carta?.nombre}}</b></h4>
+    <p>{{carta?.resume}}</p>
+  </div>
+</div>
+}
+
+
+
+
+
+
+  ejecutarFiltro(textoRecibido: string) {
+    // Si borran todo el texto, regresamos a los 4 héroes originales
+    if (!textoRecibido) {
+      this.listhero = this.copiaSeguridad;
+      return;
+    }
+
+    // Buscamos coincidencias ignorando mayúsculas/minúsculas
+    this.listhero = this.copiaSeguridad.filter(h =>
+      h.nombre.toLowerCase().includes(textoRecibido.toLowerCase())
+    );
+  }
