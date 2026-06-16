@@ -1,4 +1,5 @@
 
+@if (listhero) {
 <div class="mosaico">
 @for (elemento of listhero; track elemento.id) {
   <card-hero [carta]="elemento"></card-hero>
@@ -6,4 +7,8 @@
 </div>
 
 
-
+}@else{
+  <div>
+    <p>No hay personaje asi.</p>
+  </div>
+}

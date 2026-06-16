@@ -12,7 +12,7 @@ import { SearchBarComponent } from '../search-bar-component/search-bar-component
 
 export class HeroListComponent implements OnInit {
 
-public listb = this.hero.ListHero ;
+// public listb = this.hero.ListHero ;
 
 public listhero: any[] =[];
 
@@ -24,16 +24,21 @@ ngOnInit(): void {
   console.log("Tiene datos?", this.listhero);
 }
 
-  filtrado(bustex: string){
+  addfav(favh:any){
+    this.listhero = this.listhero.map(h=>{
+        if (h.id === favh.id) {
+        return {};
+      }
+      return h;
+    })
+  }
 
+  filtrado(bustex: string){
     if(!bustex){
-      this.listhero = this.listb;
+      //this.listhero = this.listb;
       return;
     }
-
-    this.listhero = this.listb.filter(s=> s.h.nombre.toLowerCase().includes(textoRecibido.toLowerCase())
-
-    )
+    //this.listhero = this.listb.filter(s=> s.h.nombre.toLowerCase().includes(textoRecibido.toLowerCase())    )
   }
 
 }
