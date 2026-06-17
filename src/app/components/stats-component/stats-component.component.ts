@@ -34,7 +34,6 @@ export class StatsComponent implements OnInit {
 
     const MARVEL = stat.filter(d => d.tipo == "Marvel").length
 
-
     top.sort((a, b) => b.nivelPoder - a.nivelPoder);
 
     const top3 = top.slice(0,3);
