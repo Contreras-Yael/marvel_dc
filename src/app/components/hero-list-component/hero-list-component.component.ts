@@ -13,37 +13,48 @@ import { TeamBuilderComponent } from '../team-builder-component/team-builder-com
 
 export class HeroListComponent implements OnInit {
 
-// public listb = this.hero.ListHero ;
+private heroo: any[] = [];
+
+public resultbusc: any[] = [];
 
 public listhero: any[] =[];
 
   constructor(public hero: HeroService){}
 
 ngOnInit(): void {
-  this.listhero = this.hero.ListHero;
 
-  console.log("Tiene datos?", this.listhero);
+  this.heroo = this.hero.ListHero;
+  this.resultbusc = this.heroo;
+
+  this.listhero = this.hero.ListHero;
+  // console.log("Tiene datos?", this.listhero);
 }
 
   addfav(favh:any){
-    this.listhero = this.listhero.map(h=>{
-        if (h.id === favh.id) {
-        return {};
-      }
-      return h;
-    })
+
+    const findhe = this.heroo.find(h => h.id === favh.id);
+
+    if(findhe){
+      findhe.favoritos = !findhe.favoritos;
+    }
+
   }
 
   get favoritos(){
     return this.listhero.filter(h => h.favoritos === true);
   }
 
-  filtrado(bustex: string){
-    if(!bustex){
-      //this.listhero = this.listb;
+  filtrado(textoRecibido: string){
+    if(!textoRecibido){
+      this.listhero = [...this.heroo];
       return;
     }
-    //this.listhero = this.listb.filter(s=> s.h.nombre.toLowerCase().includes(textoRecibido.toLowerCase())    )
+
+    const txtopeq = textoRecibido.toLowerCase();
+
+    this.listhero = this.heroo.filter(
+      heroe => heroe.nombre.toLowerCase().includes(txtopeq)
+    )
   }
 
 }

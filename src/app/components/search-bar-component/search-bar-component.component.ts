@@ -10,28 +10,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 export class SearchBarComponent {
 
-  @Input() carta: any;
-  @Output() busqueda = new EventEmitter<String>();
+  @Output() busqueda = new EventEmitter<string>();
 
-  public search: string = '';
 
   buscardato(event:any){
-    const data = event.target.value();
-    this.busqueda.emit(data);
+    const texto = event.target.value;
+    this.busqueda.emit(texto);
   }
-
-  //   filterEmployees(): void {
-  //   if (!this.search || this.search.trim() === '') {
-  //      this.busqueda.emit(this.search)
-  //     this.carta = this.buscardato;
-  //     return;
-  //   }
-  //   const term = this.search.toLowerCase().trim();
-  //   const filtered = this.carta.filter(emp =>
-  //   (emp.name && emp.name.toLowerCase().includes(term))
-  // );
-  //   this.carta = filtered;
-  // }
-
-
 }
