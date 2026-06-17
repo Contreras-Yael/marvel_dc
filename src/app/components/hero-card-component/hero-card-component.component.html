@@ -1,14 +1,30 @@
 @if (carta) {
 <div class="card">
-  <img src="" alt="Avatar" style="width:100%">
-  <div class="container">
-    <h4><b>{{carta?.nombre}}</b></h4>
+  <div class="container-card">
+      @switch (carta.tipo) {
+        @case ('DC') {
+        <h4 class="DC"><b>{{carta?.nombre}} {{carta.tipo | emogi}}</b></h4>
+        }
+        @case ('Marvel') {
+        <h4 class="Marvel"><b>{{carta?.nombre}} {{carta.tipo | emogi}}</b></h4>
+        }
+  }
+    <h4>Descripcion</h4>
     <p>{{carta?.resume}}</p>
+
+    <h4>Estadisiticas</h4>
+    <p>Poder en escala 1 - 100: {{carta?.poder}}</p>
   </div>
-  <button (click)="seleccionfav()">
+  <button class="button-fav" (click)="seleccionfav()">
     @if (carta.favoritos) {
       quitar
+    }@else{
+      agregar a favoritos
     }
+  </button>
+
+  <button class="button-fav" (click)="selectteam()">
+    Agregar equipo
   </button>
 </div>
 }

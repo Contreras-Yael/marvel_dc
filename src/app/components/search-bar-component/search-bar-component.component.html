@@ -1,8 +1,21 @@
-        <div class="">
+        <div class="conta">
             <div class="input-group-prepend">
                 <span class="input-group-text border-0 text-muted h-100 d-flex align-items-center search-icon-wrapper">
                     <i class="fa fa-search"></i>
                 </span>
             </div>
             <input type="text" placeholder="Buscar" (keyup)="buscardato($event)">
+
+            <select (change)="buscardato($event)" id="Universe">
+              <option value="" selected>Todos</option>
+              <option value="DC">DC</option>
+              <option value="Marvel">Marvel</option>
+            </select>
+
+
+            <select (change)="buscardato($event)" id="Moral">
+              <option value="" selected>Todos</option>
+              <option value="Buena">Heroe</option>
+              <option value="Mala">Villano</option>
+            </select>
         </div>

@@ -1,16 +1,19 @@
-<Search-bar (busqueda)="filtrado($event)"></Search-bar> 
-
-@if (listhero) {
+<Search-bar (busqueda)="filtrado($event)"></Search-bar>
+<stats-co></stats-co>
+@if (listhero.length > 0) {
 <div class="mosaico">
 @for (elemento of listhero; track elemento.id) {
-  <card-hero [carta]="elemento" (favorito)="addfav($event )"></card-hero>
+  <card-hero
+  [carta]="elemento"
+  (favorito)="addfav($event )"
+  (team)="addteam($event)"
+  ></card-hero>
 }
 </div>
-}@else{
-  <div>
-    <p>No hay personaje asi.</p>
-  </div>
+}@else {
+  <h4>No hay ningun resultado asi</h4>
 }
 
+<teamhero [favlist]="favlist()" [teamlist]="teamlist()" ></teamhero>
 
-<teamhero [favlist]="favoritos"></teamhero>
+

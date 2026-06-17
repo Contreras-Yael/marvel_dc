@@ -8,4 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TeamBuilderComponent {
   @Input() favlist: any[] = [];
+  @Input() teamlist: any[]=[];
+
+
 }

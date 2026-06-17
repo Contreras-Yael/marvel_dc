@@ -1,11 +1,37 @@
-<div>
-<h3> Favoritos {{favlist}}</h3>
+<div class="recuadros">
 
+  <div class="section">
+  <h3>Favoritos</h3>
+  <div class="mosaico-fav">
   @for (fav of favlist; track fav.id) {
-    <div>
-      <p>{{ fav.nombre}}</p>
+    <div class="card">
+          <div class="container-card">
+            <h4><b>{{ fav.nombre }}</b></h4>
+             <h4>Estadisiticas</h4>
+              <p>Poder en escala 1 - 100: {{fav?.poder}}</p>
+            <p>{{ fav.resume }}</p>
+        </div>
+      </div>
+      }
     </div>
+  </div>
 
-  }
+<div class="section">
+ <h3>Equipo</h3>
+ <h4>Total integrantes: {{teamlist.length}}</h4>
+  <div class="mosaico-fav">
+  @for (team of teamlist; track team.id) {
+        <div class="card">
+          <div class="container-card">
+            <h4><b>{{ team.nombre }}</b></h4>
+             <h4>Estadisiticas</h4>
+              <p>Poder en escala 1 - 100: {{team?.poder}}</p>
+            <p>{{ team.resume }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
 
 </div>
+

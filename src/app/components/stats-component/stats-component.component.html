@@ -1,1 +1,12 @@
-<p>stats-component works!</p>
+<div class="statdi">
+  <p> Total de Personajes: {{stat.conteo_gen}}</p>
+  <p> Total de Heroes: {{stat.heroes}}</p>
+  <p> Total de Villanos: {{stat.villanos}}</p>
+  <p> Total de DC: {{stat.dc}}</p>
+  <p> Total de Marvel: {{stat.mc}}</p>
+
+  @for (item of stat.top; track $index) {
+
+  }
+
+</div>
