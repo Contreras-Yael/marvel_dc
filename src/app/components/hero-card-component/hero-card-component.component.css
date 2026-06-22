@@ -17,4 +17,88 @@ background-color: #ffffff;
   -webkit-user-select: none;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
+  overflow: hidden;
+}
+
+
+.container-card, .button-fav {
+  z-index: 1;
+}
+
+body{
+  height:100vh;
+  display:grid;
+  place-items:center;
+}
+
+.card {
+  width:26rem;
+  height:25rem;
+  border-radius:0.5rem;
+  position:relative;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+
+.card::before {
+  content:"";
+  position:absolute;
+  width:50%;
+  height:150%;
+  filter: blur(50px);
+
+  animation:animate 5s linear infinite;
+}
+
+.card.borde-dc::before {
+  background-color: #0076FF;
+}
+.card.borde-marvel::before {
+  background-color: #E23636;
+}
+
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg)
+  }
+  100%{
+    transform: rotate(360deg)
+  }
+}
+
+.card::after{
+   content:"";
+  position:absolute;
+  inset:5px;
+  border-radius:0.5rem;
+  background-color:#eaeaeaf1;
+}
+
+.container-card{
+  margin: 20px;
+}
+
+.mosaico{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+
+.DC{
+color: rgb(77, 77, 246);
+
+}
+
+.Marvel{
+color: rgb(243, 57, 57);
+
+}
+
+.Nicat{
+color: rgb(144, 57, 243);
+
 }

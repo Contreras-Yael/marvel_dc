@@ -1,5 +1,5 @@
 @if (carta) {
-<div class="card">
+<div class="card" [class.borde-dc]="carta.tipo === 'DC'" [class.borde-marvel]="carta.tipo === 'Marvel'">
   <div class="container-card">
       @switch (carta.tipo) {
         @case ('DC') {

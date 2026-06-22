@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { HeroCardComponent } from "../hero-card-component/hero-card-component.component";
 
 @Component({
   selector: 'teamhero',
-  imports: [],
+  imports: [HeroCardComponent],
   templateUrl: './team-builder-component.component.html',
   styleUrl: './team-builder-component.component.css'
 })

@@ -3,13 +3,15 @@ import { RouterOutlet } from '@angular/router';
 import { HeroListComponent } from './components/hero-list-component/hero-list-component.component';
 import { HeroCardComponent } from './components/hero-card-component/hero-card-component.component';
 import { SearchBarComponent } from './components/search-bar-component/search-bar-component.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
     HeroCardComponent,
     HeroListComponent,
-    SearchBarComponent],
+    SearchBarComponent,
+    NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
