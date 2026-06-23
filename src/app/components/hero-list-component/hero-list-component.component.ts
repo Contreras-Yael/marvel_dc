@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 // import { HeroService } from '../../services/hero-service.service';
 import { ApiheroService } from '../../services/apihero.service';
 import { HeroCardComponent } from '../hero-card-component/hero-card-component.component';
@@ -15,20 +15,27 @@ import { StatsComponent } from '../stats-component/stats-component.component';
 
 export class HeroListComponent implements OnInit {
 
-public listhero: any[] =[];
+private listhero = inject(ApiheroService);
 
-private heroo: any[] = [];
-
+public heroo: any[] = [];
 public team: any[] = [];
 
-  constructor(public hero: ApiheroService){}
+  constructor(){}
 
   ngOnInit(): void {
-
-
-
+    this.cargahero();
   }
 
+  private async cargahero(): Promise<void>{
+
+    const heroapi = await this.listhero.iteraciom();
+
+
+    for (let sup = 0; sup < this.heroo.length ; sup++) {
+
+      const element = this.heroo[sup];
+    }
+  }
 
   addfav(favh:any){
     const findhe = this.heroo.find(h => h.id === favh.id);
@@ -37,7 +44,7 @@ public team: any[] = [];
     }
   }
   favlist() {
-  return this.listhero.filter(h => h.favoritos === true);
+  return this.listhero.iteraciom;
 
 }
 
