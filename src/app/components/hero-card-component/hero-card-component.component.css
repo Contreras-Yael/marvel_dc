@@ -102,3 +102,9 @@ color: rgb(243, 57, 57);
 color: rgb(144, 57, 243);
 
 }
+
+
+.botones_extra{
+  z-index: 1;
+  gap: 10px;
+}

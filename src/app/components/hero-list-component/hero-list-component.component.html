@@ -1,4 +1,6 @@
-<Search-bar (busqueda)="filtrado($event)"></Search-bar>
+<!-- <Search-bar (busqueda)="filtrado($event)"></Search-bar> -->
+
+
 <stats-co></stats-co>
 @if (listhero.length > 0) {
 <div class="mosaico">
@@ -16,4 +18,4 @@
 
 <teamhero [favlist]="favlist()" [teamlist]="teamlist()" ></teamhero>
 
-
+<Search-bar [hero]="listhero" ></Search-bar>

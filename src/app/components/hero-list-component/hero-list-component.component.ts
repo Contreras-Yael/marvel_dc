@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService } from '../../services/hero-service.service';
+// import { HeroService } from '../../services/hero-service.service';
+import { ApiheroService } from '../../services/apihero.service';
 import { HeroCardComponent } from '../hero-card-component/hero-card-component.component';
 import { SearchBarComponent } from '../search-bar-component/search-bar-component.component';
 import { TeamBuilderComponent } from '../team-builder-component/team-builder-component.component';
@@ -20,27 +21,12 @@ private heroo: any[] = [];
 
 public team: any[] = [];
 
-  constructor(public hero: HeroService){}
+  constructor(public hero: ApiheroService){}
 
   ngOnInit(): void {
 
-  this.listhero = this.hero.ListHero;
-  this.heroo = this.hero.ListHero;
 
-  }
 
-  filtrado(textoRecibido: string){
-    if(!textoRecibido){
-      this.listhero = this.heroo;
-            //preguntar por ... Spread_syntax [... this.variable]
-      return;
-    }
-    const txtopeq = textoRecibido.toLowerCase();
-    this.listhero = this.heroo.filter(heroe =>
-    ( heroe.nombre.toLowerCase().includes(txtopeq)||
-      heroe.tipo.toLowerCase().includes(txtopeq)||
-      heroe.moral.toLowerCase().includes(txtopeq) )
-    )
   }
 
 

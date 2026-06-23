@@ -15,7 +15,9 @@
     <h4>Estadisiticas</h4>
     <p>Poder en escala 1 - 100: {{carta?.poder}}</p>
   </div>
-  <button class="button-fav" (click)="seleccionfav()">
+
+<div class="botones_extra">
+<button class="button-fav" (click)="seleccionfav()">
     @if (carta.favoritos) {
       quitar
     }@else{
@@ -26,5 +28,8 @@
   <button class="button-fav" (click)="selectteam()">
     Agregar equipo
   </button>
+
+  </div>
+
 </div>
 }

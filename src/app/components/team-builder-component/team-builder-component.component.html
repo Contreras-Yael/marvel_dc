@@ -3,20 +3,17 @@
   <div class="section">
   <h3>Favoritos</h3>
   <div class="mosaico-fav">
+
   @for (fav of favlist; track fav.id) {
-
-
     <div class="card">
-          <div class="container-card">
-            <h4><b>{{ fav.nombre }}</b></h4>
-             <h4>Estadisiticas</h4>
-              <p>Poder en escala 1 - 100: {{fav?.poder}}</p>
-            <p>{{ fav.resume }}</p>
-        </div>
+       <card-hero
+        [carta]="fav"
+        (favorito)="fav"
+        (team)="fav"
+        ></card-hero>
       </div>
-
-
       }
+
     </div>
   </div>
 
@@ -24,16 +21,17 @@
  <h3>Equipo</h3>
  <h4>Total integrantes: {{teamlist.length}}</h4>
   <div class="mosaico-fav">
-  @for (team of teamlist; track team.id) {
-        <div class="card">
-          <div class="container-card">
-            <h4><b>{{ team.nombre }}</b></h4>
-             <h4>Estadisiticas</h4>
-              <p>Poder en escala 1 - 100: {{team?.poder}}</p>
-            <p>{{ team.resume }}</p>
-          </div>
+
+    @for (team of teamlist; track team.id) {
+      <div class="card">
+       <card-hero
+        [carta]="team"
+        (favorito)="team"
+        (team)="team"
+        ></card-hero>
         </div>
       }
+
     </div>
   </div>
 
