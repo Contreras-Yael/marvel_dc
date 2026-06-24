@@ -1,20 +1,72 @@
 <h2> Formulario reactivo</h2>
 
 <form [formGroup]="formulario" (ngSumbit)="onSumbit()">
-  <div class="field">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="Nombre" formControlName="Nombre"/>
 
+  <div class="field">
+    <label for="Nombre">Nombre:</label>
+    <input type="text" id="Nombre" formControlName="Nombre"/>
     <div *ngIf="formulario.get('Nombre')?.valid && formulario.get('Nombre')?.touched">
-        <span *ngIf="formulario.get('nombre')?.errors?.['requiered']">
+
+      <span *ngIf="formulario.get('nombre')?.errors?.['requiered']">
           Nombre obligatorio
         </span>
 
         <span *ngIf="formulario.get('nombre')?.errors?.['minlength']">
           Nombre corto
         </span>
+
+      </div>
+  </div>
+
+  <div class="field">
+    <label for="Alias">Alias:</label>
+    <input type="text" id="Alias" formControlName="Alias"/>
+
+    <div *ngIf="formulario.get('Alias')?.valid && formulario.get('Alias')?.touched">
+        <span *ngIf="formulario.get('Alias')?.errors?.['requiered']">
+          Nombre obligatorio
+        </span>
+
+        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
+          Nombre corto
+        </span>
     </div>
   </div>
+
+  <div class="field">
+    <label for="Correo">Correo:</label>
+    <input type="Correo" id="Correo" formControlName="email"/>
+
+    <div *ngIf="formulario.get('Correo')?.valid && formulario.get('Correo')?.touched">
+        <span *ngIf="formulario.get('Correo')?.errors?.['requiered']">
+          Nombre obligatorio
+        </span>
+
+        <span *ngIf="formulario.get('Correo')?.errors?.['email']">
+          Nombre corto
+        </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="Poder">Poder:</label>
+    <input type="number" id="Poder" formControlName="Poder"/>
+
+
+    <div *ngIf="formulario.get('Poder')?.valid && formulario.get('Alias')?.touched">
+        <span *ngIf="formulario.get('Poder')?.errors?.['requiered']">
+          Nombre obligatorio
+        </span>
+
+        <span *ngIf="formulario.get('Poder')?.errors?.['min']">
+          Nombre corto
+        </span>
+        <span *ngIf="formulario.get('Poder')?.errors?.['max']">
+          Nombre lacorto
+        </span>
+    </div>
+  </div>
+
 
   <button type="submit">
         Enviar

@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {FormGroup,FormControl,Validator, Validators} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -5,7 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'about-us-page',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.css'
 })
