@@ -2,9 +2,9 @@
 
 
 <stats-co></stats-co>
-@if (listhero.length > 0) {
+@if (heroo.length > 0) {
 <div class="mosaico">
-@for (elemento of listhero; track elemento.id) {
+@for (elemento of heroo; track elemento.id) {
   <card-hero
   [carta]="elemento"
   (favorito)="addfav($event )"
@@ -18,4 +18,4 @@
 
 <teamhero [favlist]="favlist()" [teamlist]="teamlist()" ></teamhero>
 
-<Search-bar [hero]="listhero" ></Search-bar>
+<Search-bar [hero]="heroo" ></Search-bar>

@@ -15,8 +15,9 @@ import { StatsComponent } from '../stats-component/stats-component.component';
 
 export class HeroListComponent implements OnInit {
 
-private listhero = inject(ApiheroService);
+public heroService : any[] = [];
 
+public listhero  = inject(ApiheroService);
 public heroo: any[] = [];
 public team: any[] = [];
 
@@ -27,15 +28,17 @@ public team: any[] = [];
   }
 
   private async cargahero(): Promise<void>{
+    for (let sup = 1 ; sup++;) {
+       const heroapi = await this.listhero.iteraciom(sup);
 
-    const heroapi = await this.listhero.iteraciom();
+       if(!heroapi||heroapi.response === "error"){ break; }
 
+        this.heroo.push(heroapi);
 
-    for (let sup = 0; sup < this.heroo.length ; sup++) {
-
-      const element = this.heroo[sup];
     }
   }
+
+
 
   addfav(favh:any){
     const findhe = this.heroo.find(h => h.id === favh.id);
@@ -44,7 +47,7 @@ public team: any[] = [];
     }
   }
   favlist() {
-  return this.listhero.iteraciom;
+  return this.heroo.filter(h => h.favoritos);
 
 }
 
