@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -13,15 +13,11 @@ export class ApiheroService {
 
   private http = inject(HttpClient);
 
-  private urlbase = "https://superheroapi.com/api";
-  private key = "2f648a02029473f5456a17a6cf18f0fb";
+  private url_sup = 'http://localhost:3977/api/heroes/general';
 
+ sups_list():Observable<any[]>{
+  return this.http.get<any[]>(this.url_sup)
 
-  public iteraciom = (characterid: number): Promise<any> => {
-    const data = `${this.urlbase}/${this.key}/${characterid}`;
-
-    return firstValueFrom(this.http.get<any>(data));
-  }
-
+ }
 
 }

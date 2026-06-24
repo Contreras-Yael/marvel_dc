@@ -2,9 +2,9 @@
 
 
 <stats-co></stats-co>
-@if (heroo.length > 0) {
+@if (heroService.length > 0) {
 <div class="mosaico">
-@for (elemento of heroo; track elemento.id) {
+@for (elemento of heroService; track elemento.id) {
   <card-hero
   [carta]="elemento"
   (favorito)="addfav($event )"

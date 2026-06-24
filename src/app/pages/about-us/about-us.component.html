@@ -1,1 +1,23 @@
-<p>about-us works!</p>
+<h2> Formulario reactivo</h2>
+
+<form [formGroup]="formulario" (ngSumbit)="onSumbit()">
+  <div class="field">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="Nombre" formControlName="Nombre"/>
+
+    <div *ngIf="formulario.get('Nombre')?.valid && formulario.get('Nombre')?.touched">
+        <span *ngIf="formulario.get('nombre')?.errors?.['requiered']">
+          Nombre obligatorio
+        </span>
+
+        <span *ngIf="formulario.get('nombre')?.errors?.['minlength']">
+          Nombre corto
+        </span>
+    </div>
+  </div>
+
+  <button type="submit">
+        Enviar
+  </button>
+
+</form>

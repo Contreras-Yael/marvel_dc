@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HeroService } from '../../services/hero-service.service';
+import { ApiheroService } from '../../services/apihero.service';
 
 @Component({
   selector: 'stats-co',
@@ -17,6 +18,9 @@ export class StatsComponent implements OnInit {
 
     this.data = this.statherolist.ListHero;
   }
+
+
+  //cambio total, mirar la api y que contiene
 
   get stat(){
     const stat = this.data;
