@@ -10,54 +10,39 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 export class SearchBarComponent {
 
-  @Output() busqueda = new EventEmitter<string>();
+  @Output() busqueda = new EventEmitter<any>();
 
-  @Input() hero: any[] = [];
+  public texto = '';
+  public editorial = 'Todos';
+  public moral = 'Todos';
 
-  private listhero: any[] = [];
-
-  constructor(){}
-
-  ngOnInit(): void {
-    this.hero = this.listhero;
+  text_bus(event: any) {
+  this.texto = event.target.value;
+  this.filtro();
   }
 
-  text_bus(){
-
+  tad_edi(event: any) {
+  this.editorial = event.target.value;
+  this.filtro();
   }
 
-  tad_edi(){
-
+  tag_mor(event: any) {
+  this.moral = event.target.value;
+  this.filtro();
   }
 
-  tag_mor(){
-
+  filtro() {
+  this.busqueda.emit({
+  texto: this.texto,
+  editorial: this.editorial,
+  moral: this.moral
+  });
   }
-
-
-  filtro_2(){
-
-
-  }
-
-
-  // filtrado(textoRecibido: string){
-  //   if(!textoRecibido){
-  //     this.hero = this.hero;
-  //     return;
-
-  //   }
-  //   const txtopeq = textoRecibido.toLowerCase();
-  //   this.listhero = this.heroo.filter(heroe =>
-  //   ( heroe.nombre.toLowerCase().includes(txtopeq)||
-  //     heroe.tipo.toLowerCase().includes(txtopeq)||
-  //     heroe.moral.toLowerCase().includes(txtopeq) )
-  //   )
-  // }
-
 
   buscardato(event:any){
     const texto = event.target.value;
     this.busqueda.emit(texto);
+
+    console.log(this.busqueda);
   }
 }

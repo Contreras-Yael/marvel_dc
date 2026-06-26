@@ -35,14 +35,14 @@
 
   <div class="field">
     <label for="Correo">Correo:</label>
-    <input type="Correo" id="Correo" formControlName="email"/>
+    <input type="Correo" id="Correo" formControlName="Correo"/>
 
     <div *ngIf="formulario.get('Correo')?.valid && formulario.get('Correo')?.touched">
         <span *ngIf="formulario.get('Correo')?.errors?.['requiered']">
           Nombre obligatorio
         </span>
 
-        <span *ngIf="formulario.get('Correo')?.errors?.['email']">
+        <span *ngIf="formulario.get('Correo')?.errors?.['Correo']">
           Nombre corto
         </span>
     </div>

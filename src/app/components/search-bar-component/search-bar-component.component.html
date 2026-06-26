@@ -4,18 +4,20 @@
                     <i class="fa fa-search"></i>
                 </span>
             </div>
-            <input type="text" placeholder="Buscar" (keyup)="buscardato($event)">
 
-            <select (change)="buscardato($event)" id="Universe">
-              <option value="" selected>Todos</option>
-              <option value="DC">DC</option>
-              <option value="Marvel">Marvel</option>
+            <input #busqueda type="text" (keyup)="text_bus($event)" placeholder="Buscar heroe">
+
+            <select (change)="tad_edi($event)">
+              <option value="Todos">Todos</option>
+              <option value="Marvel Comics">Marvel</option>
+              <option value="DC Comics">DC</option>
+              <option value="Dark Horse Comics">Dark Horse</option>
+              <option value="Wildstorm">Wildstorm</option>
             </select>
 
-
-            <select (change)="buscardato($event)" id="Moral">
-              <option value="" selected>Todos</option>
-              <option value="Buena">Heroe</option>
-              <option value="Mala">Villano</option>
+            <select (change)="tag_mor($event)">
+              <option value="Todos">Todos</option>
+              <option value="good">Buena</option>
+              <option value="bad">Mala</option>
             </select>
         </div>

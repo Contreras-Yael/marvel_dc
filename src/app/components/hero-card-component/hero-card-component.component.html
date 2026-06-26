@@ -1,3 +1,4 @@
+
 @if (carta) {
 <div class="card" [class.borde-dc]="carta.tipo === 'DC'" [class.borde-marvel]="carta.tipo === 'Marvel'">
   <div class="container-card">
@@ -9,14 +10,20 @@
         <h4 class="Marvel"><b>{{carta?.nombre}} {{carta.tipo | emogi}}</b></h4>
         }
   }
-    <h4>Descripcion</h4>
-    <img [src]="carta?.imagenUrl" alt="Imagen de {{carta?.nombre}}">
-    <p>{{carta?.name}}</p>
-    <p>{{carta?.biography}}</p>
 
-    <h4>Estadisiticas</h4>
-    <p>Poder en escala 1 - 100: {{carta?.appearance}}</p>
-  </div>
+      <div>
+        <h4>Descripcion</h4>
+        <p><strong>Nombre completo:</strong>{{carta?.name}}</p>
+        <p><strong>Alter ego:</strong> {{ carta?.biography?.['alter-egos'] }}</p>
+        <!-- <img [src]="carta?.image.url" alt="Imagen de {{carta?.name}}"> -->
+        <p><strong>Editorial:</strong> {{ carta?.biography?.['publisher'] }}</p>
+
+        <h4>Estadisiticas</h4>
+
+        <p><strong>Poder 1-100 :</strong> {{ carta?.powerstats?.['power'] }}</p>
+
+      </div>
+    </div>
 
 <div class="botones_extra">
 <button class="button-fav" (click)="seleccionfav()">

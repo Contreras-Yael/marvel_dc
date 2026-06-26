@@ -1,11 +1,11 @@
-<!-- <Search-bar (busqueda)="filtrado($event)"></Search-bar> -->
+ <Search-bar (busqueda)=aplicarFiltros($event)></Search-bar>
+ <stats-co></stats-co>
 
-
-<stats-co></stats-co>
-@if (heroService.length > 0) {
+@if (items().length > 0) {
 <div class="mosaico">
-@for (elemento of heroService; track elemento.id) {
-  <card-hero
+@for (elemento of items(); track elemento.id) {
+
+<card-hero
   [carta]="elemento"
   (favorito)="addfav($event )"
   (team)="addteam($event)"
@@ -18,4 +18,3 @@
 
 <teamhero [favlist]="favlist()" [teamlist]="teamlist()" ></teamhero>
 
-<Search-bar [hero]="heroo" ></Search-bar>
