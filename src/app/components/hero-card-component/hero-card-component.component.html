@@ -10,7 +10,7 @@
         }
   }
     <h4>Descripcion</h4>
-    <img [src]="'http://localhost:3977/api/imagen-odio?url=' + url" alt="Imagen de {{carta?.nombre}}">
+    <img [src]="carta?.imagenUrl" alt="Imagen de {{carta?.nombre}}">
     <p>{{carta?.name}}</p>
     <p>{{carta?.biography}}</p>
 
