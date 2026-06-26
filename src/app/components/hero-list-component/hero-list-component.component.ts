@@ -5,7 +5,6 @@ import { HeroCardComponent } from '../hero-card-component/hero-card-component.co
 import { SearchBarComponent } from '../search-bar-component/search-bar-component.component';
 import { TeamBuilderComponent } from '../team-builder-component/team-builder-component.component';
 import { StatsComponent } from '../stats-component/stats-component.component';
-import { find } from 'rxjs';
 
 @Component({
   selector: 'List-hero',
@@ -20,8 +19,6 @@ private listhero  = inject(ApiheroService);
 public heroService : any[] = [];
 public heroo: any[] = [];
 public team: any[] = [];
-
-public favo: any[]=[];
 
   constructor(){
     effect(()=>{console.log(`Funciona el filto?`,this.filtros())})
@@ -76,15 +73,20 @@ cargahero(){
 //======
   addfav(favh:any){
     const findhe = this.heroo.find(h => h.id === favh.id);
-    if(findhe){
-      findhe.favoritos = !findhe.favoritos;
+    if(findhe !== 0){
+      this.heroo.splice(findhe,1);
+      console.log("prueba", favh.name);
+    }else{
+      this.heroo.push(favh);
+      console.log("prueba 2, agregado", favh.name)
     }
+
   }
   favlist() {
-  return this.heroo.filter(h => h.favoritos);
-
-  // localStorage.setItem('favoritos',JSON.stringify(favo));
+  localStorage.setItem('task', JSON.stringify(this.heroo));
+  return this.heroo;
 }
+
 
 //======
   addteam(teamh:any){
@@ -102,7 +104,6 @@ cargahero(){
     teamli.push(teamh);
 
     this.team = teamli;
-
   }
 
   teamlist(){

@@ -24,20 +24,6 @@ export class HeroCardComponent   {
   public url="https://www.superherodb.com/pictures2/portraits/10/100/167.jpg";
 
   constructor(){}
-
-//   get hero_inf() {
-//   if (!this.carta?.biography) return [];
-//   return Object.entries(this.carta.biography);
-//  }
-//  @for (item of stats; track $index) {
-//       <p>{{item[0]}}: {{item[1]}}</p>
-//     }
-
-//   get stats(){
-//     if(!this.carta?.powerstats)return[];
-//     return Object.entries(this.carta.powerstats);
-//   }
-
   seleccionfav(){
     this.favorito.emit(this.carta);
   }
@@ -45,7 +31,4 @@ export class HeroCardComponent   {
   selectteam(){
     this.team.emit(this.carta);
   }
-
-
-
 }
