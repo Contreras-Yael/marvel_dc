@@ -80,7 +80,6 @@ cargahero(){
       this.heroo.push(favh);
       console.log("prueba 2, agregado", favh.name)
     }
-
   }
   favlist() {
   localStorage.setItem('task', JSON.stringify(this.heroo));
