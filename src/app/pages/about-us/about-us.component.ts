@@ -35,7 +35,7 @@ export class AboutUsComponent {
     ]),
   });
 
-  onSumbit(){
+  onSubmit(){
     if(this.formulario.valid){
       console.info("Formulario se envio: ", this.formulario.value);
     }else{

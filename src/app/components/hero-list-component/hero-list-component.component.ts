@@ -1,5 +1,4 @@
 import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
-// import { HeroService } from '../../services/hero-service.service';
 import { ApiheroService } from '../../services/apihero.service';
 import { HeroCardComponent } from '../hero-card-component/hero-card-component.component';
 import { SearchBarComponent } from '../search-bar-component/search-bar-component.component';
@@ -19,6 +18,7 @@ private listhero  = inject(ApiheroService);
 public heroService : any[] = [];
 public heroo: any[] = [];
 public team: any[] = [];
+public favl: any[] = [];
 
   constructor(){
     effect(()=>{console.log(`Funciona el filto?`,this.filtros())})
@@ -26,6 +26,8 @@ public team: any[] = [];
 
   ngOnInit(): void {
     this.cargahero();
+    this.favcarg();
+    this.teamcarg();
   }
 
 
@@ -36,6 +38,23 @@ cargahero(){
       console.log('Cargado o eso parece', this.heroService);
     }});
   }
+
+  favcarg(){
+    const favs = localStorage.getItem('fav');
+    if(favs){
+      this.favl = JSON.parse(favs);
+    }
+  }
+
+  teamcarg(){
+    const team = localStorage.getItem('team');
+    if(team){
+      this.team = JSON.parse(team);
+    }
+  }
+
+
+
 
   aplicarFiltros(filtrosRecibidos: any) {
   this.filtros.set(filtrosRecibidos);
@@ -72,18 +91,19 @@ cargahero(){
 
 //======
   addfav(favh:any){
-    const findhe = this.heroo.find(h => h.id === favh.id);
-    if(findhe !== 0){
-      this.heroo.splice(findhe,1);
+    const exis = this.favl.find(h => h.id === favh.id);
+    if(exis){
+      this.favl = this.favl.filter(h => h.id !== favh.id);
       console.log("prueba", favh.name);
     }else{
-      this.heroo.push(favh);
+      this.favl.push(favh);
       console.log("prueba 2, agregado", favh.name)
     }
+    localStorage.setItem('fav', JSON.stringify(this.favl));
   }
+
   favlist() {
-  localStorage.setItem('task', JSON.stringify(this.heroo));
-  return this.heroo;
+  return this.favl;
 }
 
 
@@ -103,6 +123,8 @@ cargahero(){
     teamli.push(teamh);
 
     this.team = teamli;
+
+    localStorage.setItem('team', JSON.stringify(this.team));
   }
 
   teamlist(){

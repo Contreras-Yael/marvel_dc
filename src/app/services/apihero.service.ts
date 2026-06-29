@@ -13,7 +13,7 @@ export class ApiheroService {
 
   private http = inject(HttpClient);
 
-  private url_sup = 'http://localhost:3977/api/heroes/general';
+  private url_sup = 'http://localhost:3977/api/heroes';
 
   private herosig = signal<any[]>([]);
 
