@@ -1,14 +1,15 @@
- <Search-bar (busqueda)=aplicarFiltros($event)></Search-bar>
- <stats-co></stats-co>
+ <!-- <Search-bar (busqueda)="aplicarFiltros($event)"></Search-bar> -->
+<Search-bar></Search-bar>
+<stats-co></stats-co>
 
-@if (items().length > 0) {
+@if (historialbusc.items().length > 0) {
 <div class="mosaico">
-@for (elemento of items(); track elemento.id) {
+@for (elemento of historialbusc.items(); track elemento.id) {
 
 <card-hero
   [carta]="elemento"
-  (favorito)="addfav($event )"
-  (team)="addteam($event)"
+  (favorito)="historialbusc.addfav($event )"
+  (team)="historialbusc.addteam($event)"
   ></card-hero>
 }
 </div>
@@ -16,5 +17,5 @@
   <h4>No hay ningun resultado asi</h4>
 }
 
-<teamhero [favlist]="favlist()" [teamlist]="teamlist()" ></teamhero>
+<teamhero [favlist]="historialbusc.favlist()" [teamlist]="historialbusc.teamlist()" ></teamhero>
 

@@ -5,7 +5,11 @@
                 </span>
             </div>
 
-            <input #busqueda type="text" (keyup)="text_bus($event)" placeholder="Buscar heroe">
+            <input #busqueda 
+            type="text" 
+            (keyup)="text_bus($event)" 
+            placeholder="Buscar heroe"
+            (keyup.enter)="registrarbusq()">
 
             <select (change)="tad_edi($event)">
               <option value="Todos">Todos</option>

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { HeroCardComponent } from "../hero-card-component/hero-card-component.component";
+// import { ApiheroService } from '../../services/apihero.service';
 
 @Component({
   selector: 'teamhero',
@@ -8,8 +9,14 @@ import { HeroCardComponent } from "../hero-card-component/hero-card-component.co
   styleUrl: './team-builder-component.component.css'
 })
 export class TeamBuilderComponent {
+  // private listhero  = inject(ApiheroService);
+
   @Input() favlist: any[] = [];
   @Input() teamlist: any[]=[];
+
+
+  public busqued: any[] = [];
+  public tbusc: number = 0;
 
 
 }

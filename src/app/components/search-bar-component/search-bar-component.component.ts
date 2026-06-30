@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Component, inject } from '@angular/core';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'Search-bar',
@@ -7,42 +7,42 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './search-bar-component.component.html',
   styleUrl: './search-bar-component.component.css'
 })
-
 export class SearchBarComponent {
-
-  @Output() busqueda = new EventEmitter<any>();
 
   public texto = '';
   public editorial = 'Todos';
   public moral = 'Todos';
 
-  text_bus(event: any) {
-  this.texto = event.target.value;
-  this.filtro();
+  public historial = inject(LocalStorageService);
+
+  text_bus(event: Event) {
+    this.texto = (event.target as HTMLInputElement).value;
+    this.filtro();
   }
 
-  tad_edi(event: any) {
-  this.editorial = event.target.value;
-  this.filtro();
+  tad_edi(event: Event) {
+    this.editorial = (event.target as HTMLSelectElement).value;
+    this.filtro();
   }
 
-  tag_mor(event: any) {
-  this.moral = event.target.value;
-  this.filtro();
+  tag_mor(event: Event) {
+    this.moral = (event.target as HTMLSelectElement).value;
+    this.filtro();
   }
 
   filtro() {
-  this.busqueda.emit({
-  texto: this.texto,
-  editorial: this.editorial,
-  moral: this.moral
-  });
+    this.historial.filtrosap({
+      texto: this.texto,
+      editorial: this.editorial,
+      moral: this.moral
+    });
   }
 
-  buscardato(event:any){
-    const texto = event.target.value;
-    this.busqueda.emit(texto);
+  registrarbusq() {
+    if (!this.texto.trim()) {
+      return;
+    }
 
-    console.log(this.busqueda);
+    this.historial.buscregistro(this.texto);
   }
 }

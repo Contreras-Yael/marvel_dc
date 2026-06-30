@@ -1,11 +1,26 @@
-<div class="statdi">
-  <p> Total de Personajes: {{stat.conteo_gen}}</p>
-  <p> Total de Heroes: {{stat.heroes}}</p>
-  <p> Total de Villanos: {{stat.villanos}}</p>
-  <p> Total de DC: {{stat.dc}}</p>
-  <p> Total de Marvel: {{stat.mc}}</p>
+<section class="stats">
+  <div class="stat-card">
+    <span>Total héroes: {{ historial.totalheroes() }} </span>
+    <span>Resultados: {{ historial.totalresultados() }} </span>
+    <span>Búsquedas: {{ historial.totalbusc() }} </span>
+    <span>Favoritos: {{ historial.totalfav() }} </span>
+    <span>Equipo: {{ historial.totalteam() }} </span>
+    <span>Marvel: {{ historial.totalmarvel() }} </span>
+    <span>DC: {{ historial.totaldc() }} </span>
+    <span>Buenos: {{ historial.totalbuenos() }} </span>
+    <span>Malos: {{ historial.totalmalos() }} </span>
+  </div>
+</section>
 
-  @for (item of stat.top; track $index) {
 
+<section class="historial">
+  <h4>Últimas búsquedas</h4>
+
+  @if (historial.busquedhis().length > 0) {
+    @for (busqueda of historial.busquedhis(); track $index) {
+      <p>{{ busqueda }}</p>
+    }
+  } @else {
+    <p>No hay búsquedas registradas.</p>
   }
-</div>
+</section>
