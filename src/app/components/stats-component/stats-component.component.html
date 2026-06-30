@@ -1,24 +1,23 @@
 <section class="stats">
   <div class="stat-card">
-    <span>Total héroes: {{ historial.totalheroes() }} </span>
-    <span>Resultados: {{ historial.totalresultados() }} </span>
-    <span>Búsquedas: {{ historial.totalbusc() }} </span>
-    <span>Favoritos: {{ historial.totalfav() }} </span>
-    <span>Equipo: {{ historial.totalteam() }} </span>
-    <span>Marvel: {{ historial.totalmarvel() }} </span>
-    <span>DC: {{ historial.totaldc() }} </span>
-    <span>Buenos: {{ historial.totalbuenos() }} </span>
-    <span>Malos: {{ historial.totalmalos() }} </span>
+    <span><strong>Total héroes: </strong>{{ historial.totalheroes() }} &sbquo;</span>
+    <span><strong>TResultados: </strong>{{ historial.totalresultados() }}  &sbquo;</span>
+    <span><strong>TBúsquedas:</strong> {{ historial.totalbusc() }}  &sbquo;</span>
+    <span><strong>TFavoritos:</strong> {{ historial.totalfav() }}  &sbquo;</span>
+    <span><strong>TEquipo: </strong>{{ historial.totalteam() }}  &sbquo;</span>
+    <span><strong>TMarvel:</strong> {{ historial.totalmarvel() }}  &sbquo;</span>
+    <span><strong>TDC: </strong>{{ historial.totaldc() }}  &sbquo;</span>
+    <span><strong>TBuenos:</strong> {{ historial.totalbuenos() }}  &sbquo;</span>
+    <span><strong>TMalos:</strong> {{ historial.totalmalos() }}  &sbquo;</span>
   </div>
 </section>
 
 
 <section class="historial">
-  <h4>Últimas búsquedas</h4>
-
+  <h3>Últimas búsquedas: </h3>
   @if (historial.busquedhis().length > 0) {
     @for (busqueda of historial.busquedhis(); track $index) {
-      <p>{{ busqueda }}</p>
+      <p>- {{ busqueda }}</p>
     }
   } @else {
     <p>No hay búsquedas registradas.</p>

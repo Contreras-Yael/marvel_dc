@@ -1,54 +1,39 @@
-.button-fav{
-background-color: #ffffff;
+.button-fav {
+  background-color: #ffffff;
   border: 1px solid rgb(209, 213, 219);
   border-radius: 0.5rem;
   color: #111827;
-  font-size: 0.875rem;
   font-weight: 600;
-  line-height: 1.25rem;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   text-align: center;
-  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
   overflow: hidden;
+  width: 100%;
 }
-
 
 .container-card, .button-fav {
   z-index: 1;
 }
 
-body{
-  height:100vh;
-  display:grid;
-  place-items:center;
-}
-
 .card {
-  width:26rem;
-  height:25rem;
-  border-radius:0.5rem;
-  position:relative;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
+  width: 24rem;
+  height: 15rem;
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .card::before {
-  content:"";
-  position:absolute;
-  width:50%;
-  height:150%;
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 100%;
   filter: blur(50px);
-
-  animation:animate 5s linear infinite;
+  animation: animate 5s linear infinite;
 }
 
 .card.borde-dc::before {
@@ -58,53 +43,86 @@ body{
   background-color: #E23636;
 }
 
-
 @keyframes animate {
-  0% {
-    transform: rotate(0deg)
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 0.5rem;
+  background-color: #eaeaeaf1;
+}
+
+
+.container-card {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.contenido {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 15px;
+
+
+.imagen {
+  width: 110px;
+  height: 100%;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  100%{
-    transform: rotate(360deg)
+}
+
+
+.bloque-derecho {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.data-info {
+  h4 {
+    margin: 0 0 4px 0;
+  }
+
+  p {
+    margin: 2px 0;
+    line-height: 1.1rem;
   }
 }
 
-.card::after{
-   content:"";
-  position:absolute;
-  inset:5px;
-  border-radius:0.5rem;
-  background-color:#eaeaeaf1;
-}
+.DC { color: rgb(77, 77, 246); margin: 2px 0; font-size: 0.85rem; }
+.Marvel { color: rgb(243, 57, 57); margin: 2px 0; font-size: 0.85rem; }
+.Nicat { color: rgb(144, 57, 243); }
 
-.container-card{
-  margin: 20px;
-}
-
-.mosaico{
+.botones_extra {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.mosaico {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
 }
-
-
-.DC{
-color: rgb(77, 77, 246);
-
-}
-
-.Marvel{
-color: rgb(243, 57, 57);
-
-}
-
-.Nicat{
-color: rgb(144, 57, 243);
-
-}
-
-
-.botones_extra{
-  z-index: 1;
-  gap: 10px;
 }

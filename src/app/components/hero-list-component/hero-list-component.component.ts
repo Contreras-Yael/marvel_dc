@@ -22,13 +22,11 @@ public historialbusc = inject(LocalStorageService);
   ngOnInit(): void {
     this.cargahero();
   }
-
-
 cargahero(){
   this.listhero.sups_list().subscribe({
     next:(data) => {
-      this.historialbusc.cargarheroe(data);
       this.heroService = data;
+      this.historialbusc.cargarheroe(data);
       console.log('Cargado o eso parece', this.heroService);
     },
     error:(error) => {

@@ -1,43 +1,52 @@
-
 @if (carta) {
-<div class="card" [class.borde-dc]="carta.tipo === 'DC'" [class.borde-marvel]="carta.tipo === 'Marvel'">
+<div class="card" [class.borde-dc]="carta?.biography?.['publisher'] === 'DC Comics'" [class.borde-marvel]="carta?.biography?.['publisher'] === 'Marvel Comics'">
+
   <div class="container-card">
-      @switch (carta.tipo) {
-        @case ('DC') {
-        <h4 class="DC"><b>{{carta?.nombre}} {{carta.tipo | emogi}}</b></h4>
-        }
-        @case ('Marvel') {
-        <h4 class="Marvel"><b>{{carta?.nombre}} {{carta.tipo | emogi}}</b></h4>
-        }
-  }
+    <div class="contenido">
 
-      <div>
-        <h4>Descripcion</h4>
-        <p><strong>Nombre completo:</strong>{{carta?.name}}</p>
-        <p><strong>Alter ego:</strong> {{ carta?.biography?.['alter-egos'] }}</p>
-        <!-- <img [src]="carta?.image.url" alt="Imagen de {{carta?.name}}"> -->
-        <p><strong>Editorial:</strong> {{ carta?.biography?.['publisher'] }}</p>
+      <div class="imagen">
+        <img [src]="'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/' + carta?.id + '-' + carta?.name?.toLowerCase()?.replace(' ', '-') + '.jpg'"
+          alt="Foto de {{ carta?.name }}">
+      </div>
 
-        <h4>Estadisiticas</h4>
+      <div class="bloque-derecho">
 
-        <p><strong>Poder 1-100 :</strong> {{ carta?.powerstats?.['power'] }}</p>
+        <div class="data-info">
+          <h4>Descripción</h4>
+          <p><strong>Nombre completo:</strong> {{carta?.name}}</p>
+
+          @switch (carta?.biography?.['publisher']) {
+            @case ('DC Comics') {
+              <h4 class="DC"><b>{{carta?.nombre}} {{carta?.biography?.['publisher'] | emogi}}</b></h4>
+            }
+            @case ('Marvel Comics') {
+              <h4 class="Marvel"><b>{{carta?.nombre}} {{carta?.biography?.['publisher'] | emogi}}</b></h4>
+            }
+          }
+
+          <p><strong>Alter ego:</strong> {{ carta?.biography?.['alter-egos'] }}</p>
+          <p><strong>Editorial:</strong> {{ carta?.biography?.['publisher'] }}</p>
+
+          <h4>Estadísticas</h4>
+          <p><strong>Poder 1-100:</strong> {{ carta?.powerstats?.['power'] }} pts</p>
+        </div>
+        <div class="botones_extra">
+          <button class="button-fav" (click)="seleccionfav()">
+            @if (carta.favoritos) {
+              quitar
+            } @else {
+              agregar a favoritos
+            }
+          </button>
+
+          <button class="button-fav" (click)="selectteam()">
+            Agregar equipo
+          </button>
+        </div>
 
       </div>
+
     </div>
-
-<div class="botones_extra">
-<button class="button-fav" (click)="seleccionfav()">
-    @if (carta.favoritos) {
-      quitar
-    }@else{
-      agregar a favoritos
-    }
-  </button>
-
-  <button class="button-fav" (click)="selectteam()">
-    Agregar equipo
-  </button>
-
   </div>
 
 </div>

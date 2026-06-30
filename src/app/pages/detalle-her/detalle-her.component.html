@@ -1,0 +1,49 @@
+<div id="wrapper">
+  <div id="border">
+    <div id="line" class="one"></div>
+  </div>
+
+  <div id="right-side">
+    <div id="first" class="active">
+      <div class="icon big">
+        <svg viewBox="0 0 32 32">
+          <g filter="">
+            <use xlink:href="#shopping-cart"></use>
+          </g>
+        </svg>
+      </div>
+
+      @if (seleonher) {
+        <div class="infocard">
+
+          <div class="imagen">
+            <img [src]="'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/' + seleonher?.id + '-' + seleonher?.name?.toLowerCase()?.replace(' ', '-') + '.jpg'"
+              alt="Foto de {{ seleonher?.name }}">
+          </div>
+
+          <div class="card-her">
+
+            <h1>Perfil Oficial: {{ seleonher?.name }}</h1>
+            <div class="data">
+              <span class="dato-item"><strong>Nombre completo:</strong> {{ seleonher?.biography?.['full-name'] }}</span>
+              <span class="dato-item"><strong>Publicadora:</strong> {{ seleonher?.biography?.['publisher'] }}</span>
+              <span class="dato-item"><strong>Oficio:</strong> {{ seleonher?.work?.['occupation'] }}</span>
+            </div>
+
+            <div class="stats-grid">
+              @for (stat of seleonher.powerstats | keyvalue; track stat.key) {
+                <div class="elemento">
+                  <span class="llave"><strong>{{ stat.key }}:</strong></span>
+                  <span class="valor">{{ stat.value }} pts</span>
+                </div>
+              }
+            </div>
+          </div>
+
+        </div>
+      } @else {
+        <h1 class="txt-cargando">Cargando ...</h1>
+      }
+    </div>
+  </div>
+</div>

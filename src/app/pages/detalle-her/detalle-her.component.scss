@@ -1,0 +1,173 @@
+$gray: #eee;
+$white: #fff;
+$black: #333;
+$active: #E74C3C;
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $gray;
+	font-family: 'Raleway', sans-serif;
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#wrapper {
+	width: 900px;
+	height: 400px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-color: $white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	display: flex;
+  	align-items: center;
+  	justify-content: left;
+	overflow: hidden;
+}
+
+#border {
+	height: 288px;
+	width: 1px;
+	background-color: rgba($black, .2);
+
+	#line.one {
+		width: 5px;
+		height: 54px;
+		background-color: $active;
+		margin-left: -2px;
+		margin-top: 35px;
+		transition: all .4s ease-in-out;
+	}
+
+	#line.two {
+		width: 5px;
+		height: 54px;
+		background-color: $active;
+		margin-left: -2px;
+		margin-top: 89px;
+		transition: all .4s ease-in-out;
+	}
+}
+
+/* 🏢 AJUSTE CRÍTICO: Permitimos que el lado derecho use el alto total disponible */
+#right-side {
+	height: 100%;
+	width: calc(100% - 1px);
+	overflow: hidden;
+
+	#first, #second {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		transition: all .6s ease-in-out;
+		margin-top: -400px;
+		opacity: 0;
+		display: flex;
+  		align-items: center;
+  		justify-content: flex-start; /* Alineado al inicio del contenedor */
+		flex-direction: row; /* Cambiado a fila para estructurar columnas internas */
+
+		.txt-cargando {
+			padding-left: 10%;
+			font-weight: 800;
+			color: $black;
+		}
+	}
+
+	#first.active, #second.active, #third.active, #fourth.active {
+		margin-top: 0px;
+		opacity: 1;
+		transition: all .6s ease-in-out;
+	}
+}
+
+/* 📡 DISEÑO ESTRUCTURAL DE LA TARJETA COMPLETA */
+.infocard {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+/* 📸 ZONA IZQUIERDA: La imagen fija y cuadrada */
+.imagen {
+  width: 250px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-right: 1px solid rgba($black, 0.05);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la foto al cuadro sin deformarla */
+  }
+}
+
+/* 📝 ZONA CENTRO: Título y Datos organizados */
+.card-her {
+  flex: 1;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: $black;
+    margin: 0 0 15px 0;
+  }
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+
+  .dato-item {
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: 500;
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding-top: 15px;
+
+  .elemento {
+    display: flex;
+    justify-content: space-between;
+    background: #dddddd;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba($black, 0.05);
+
+
+    .llave {
+      color: #777;
+    }
+
+    .valor {
+      color: #249845;
+    }
+  }
+}

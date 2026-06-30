@@ -21,7 +21,7 @@ export class HeroCardComponent   {
    @Output() team = new EventEmitter<any>();
 
 
-  public url="https://www.superherodb.com/pictures2/portraits/10/100/167.jpg";
+//  public url="https://www.superherodb.com/pictures2/portraits/10/100/167.jpg";
 
   constructor(){}
   seleccionfav(){

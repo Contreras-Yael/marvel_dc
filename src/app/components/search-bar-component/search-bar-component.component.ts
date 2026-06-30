@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
@@ -9,6 +9,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
 })
 export class SearchBarComponent {
 
+  constructor(){
+  effect(()=>{console.log(`Funciona el filto?`,this.vigifilt());
+     this.historial.filtrosap(this.vigifilt());
+  })
+}
   public texto = '';
   public editorial = 'Todos';
   public moral = 'Todos';
@@ -18,6 +23,9 @@ export class SearchBarComponent {
   text_bus(event: Event) {
     this.texto = (event.target as HTMLInputElement).value;
     this.filtro();
+
+    const valor = (event.target as HTMLSelectElement).value;
+    this.vigifilt.update(f => ({ ...f, texto: valor }));
   }
 
   tad_edi(event: Event) {
@@ -28,7 +36,14 @@ export class SearchBarComponent {
   tag_mor(event: Event) {
     this.moral = (event.target as HTMLSelectElement).value;
     this.filtro();
+
   }
+
+  public vigifilt = signal({
+      texto: '',
+      editorial:  'Todos',
+      moral: 'Todos',
+  });
 
   filtro() {
     this.historial.filtrosap({

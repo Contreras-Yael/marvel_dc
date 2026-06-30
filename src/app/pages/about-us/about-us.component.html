@@ -35,7 +35,7 @@
 
   <div class="field">
     <label for="Correo">Correo:</label>
-    <input type="Correo" id="Correo" formControlName="Correo"/>
+    <input type="email" id="Correo" formControlName="Correo"/>
 
     <div *ngIf="formulario.get('Correo')?.invalid && formulario.get('Correo')?.touched">
         <span *ngIf="formulario.get('Correo')?.errors?.['required']">
