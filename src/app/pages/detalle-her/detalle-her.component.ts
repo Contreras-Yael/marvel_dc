@@ -26,9 +26,6 @@ export class DetalleHerComponent implements OnInit{
         next: (listaDeApi) => {
           this.seleonher = listaDeApi.find(h => h.id === hereoinf.toString());
         },
-        error: (err) => {
-          console.error('Error al traer datos:', err);
-        }
       });
     }
 }

@@ -1,27 +1,26 @@
-import { computed, Injectable, signal, Signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class LocalStorageService {
-  
+
   private signalher = signal<any[]>([]);
 
   public team = signal<any[]>([]);
   public favl = signal<any[]>([]);
   private busqued = signal<string[]>([]);
-  //  public busqued: number = 0;
-  
-public busquedhis= this.busqued.asReadonly();
-public favlre= this.favl.asReadonly();
-public teamrea= this.team.asReadonly();
 
-public paginaac = signal(1);
+  public busquedhis= this.busqued.asReadonly();
+  public favlre= this.favl.asReadonly();
+  public teamrea= this.team.asReadonly();
 
-public elementosPorPagina = signal(9);
+  public paginaac = signal(1);
 
-public ranking = signal('total');
+  public elementosPorPagina = signal(9);
+
+  public ranking = signal('total');
 
  public filtros = signal({
     texto: '',
@@ -101,7 +100,7 @@ public totalmalos = computed(() => {
   });
 
   public totalpaginas = computed(() => {
-    return Math.ceil(this.items().length / this.elementosPorPagina());
+    return(this.items().length / this.elementosPorPagina());
   });
 
   public itemspagina = computed(() => {
@@ -115,19 +114,18 @@ public totalmalos = computed(() => {
   public paginas = computed(() => {
     return Array.from(
       { length: this.totalpaginas() },
-      (_, i) => i + 1);
+      (valor,i) => i + 1);
   })
 
   constructor(){
     this.histori();
     this.favcarg();
     this.teamcarg();
-   // effect(()=>{console.log(`Funciona el filto?`,this.filtros())})
   }
 
   cargarheroe(heroe: any[]) {
     this.signalher.set(heroe);
-    this.paginaac.set(1); 
+    this.paginaac.set(1);
   }
 
   filtrosap(filtrore: any){
@@ -138,7 +136,7 @@ public totalmalos = computed(() => {
   buscregistro(busqueda: string) {
     if (!busqueda.trim()) {
       return;
-    }  
+    }
 
     this.busqued.update(lista =>{
     const nlista = [busqueda, ...lista].slice(0,10);
@@ -205,14 +203,13 @@ public totalmalos = computed(() => {
 public rankingge = computed(()=>{
  return[...this.signalher()]
  .map((heroe: any)=> {
-  const total = 
-  this.stat(heroe, 'intelligence') + 
-  this.stat(heroe, 'strength') + 
-  this.stat(heroe, 'speed') + 
-  this.stat(heroe, 'durability') + 
-  this.stat(heroe, 'power') + 
+  const total =
+  this.stat(heroe, 'intelligence') +
+  this.stat(heroe, 'strength') +
+  this.stat(heroe, 'speed') +
+  this.stat(heroe, 'durability') +
+  this.stat(heroe, 'power') +
   this.stat(heroe, 'combat');
-
   return {...heroe,totalstat: total};
 })
 .sort((a, b) => b.totalstat - a.totalstat)
@@ -234,8 +231,6 @@ public rankingin = computed(()=>{
   .slice(0, 5);
 })
 
-
-
   //======
   addfav(favh:any){
     const exis = this.favl().find(h => h.id === favh.id);
@@ -252,7 +247,6 @@ public rankingin = computed(()=>{
   favlist() {
   return this.favl();
 }
-
 
 //======
   addteam(teamh:any){
