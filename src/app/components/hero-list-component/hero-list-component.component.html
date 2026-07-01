@@ -3,7 +3,7 @@
 
 @if (historialbusc.items().length > 0) {
 <div class="mosaico">
-@for (elemento of historialbusc.items(); track elemento.id) {
+@for (elemento of historialbusc.itemspagina(); track elemento.id) {
 
 <card-hero
   [carta]="elemento"
@@ -14,6 +14,28 @@
 </div>
 }@else {
   <h4>No hay ningun resultado asi</h4>
+}
+
+@if (historialbusc.totalpaginas() > 1) {
+  <nav class="paginacion">
+    <button 
+    type="button"
+    (click)="historialbusc.antpag()" 
+    [disabled]="historialbusc.paginaac() === 1">Anterior</button>
+
+    @for (paginaac of historialbusc.paginas(); track $index) {
+      <button 
+      type="button"
+      (click)="historialbusc.cambiopag(paginaac)"
+      [class.active]="paginaac === historialbusc.paginaac()">{{ paginaac }}</button>
+    }
+
+    <button
+    type="button"
+    (click)="historialbusc.siguipag()" 
+    [disabled]="historialbusc.paginaac() === historialbusc.totalpaginas()">Siguiente</button>
+
+  </nav>
 }
 
 <teamhero [favlist]="historialbusc.favlist()" [teamlist]="historialbusc.teamlist()" ></teamhero>

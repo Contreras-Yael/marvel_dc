@@ -1,5 +1,5 @@
 @if (carta) {
-<div class="card" [class.borde-dc]="carta?.biography?.['publisher'] === 'DC Comics'" [class.borde-marvel]="carta?.biography?.['publisher'] === 'Marvel Comics'">
+<div class="card" [class.borde-dc]="carta?.biography?.['publisher'] === 'DC Comics'" [class.borde-marvel]="carta?.biography?.['publisher'] === 'Marvel Comics'" [routerLink]="['/Heroes', carta?.id]">
 
   <div class="container-card">
     <div class="contenido">

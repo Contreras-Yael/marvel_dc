@@ -2,13 +2,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 //import { TeamBuilderComponent } from '../team-builder-component/team-builder-component.component';
 import { StatsComponent } from '../stats-component/stats-component.component';
 import { Emogipipe } from '../../pipes/emogi.pipe';
-import { Observable } from 'rxjs/internal/Observable';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'card-hero',
   standalone: true,
-  imports: [StatsComponent,Emogipipe],
+  imports: [StatsComponent,Emogipipe,RouterLink],
   templateUrl: './hero-card-component.component.html',
   styleUrl: './hero-card-component.component.css'
 })

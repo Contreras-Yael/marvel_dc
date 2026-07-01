@@ -17,6 +17,12 @@ public busquedhis= this.busqued.asReadonly();
 public favlre= this.favl.asReadonly();
 public teamrea= this.team.asReadonly();
 
+public paginaac = signal(1);
+
+public elementosPorPagina = signal(9);
+
+public ranking = signal('total');
+
  public filtros = signal({
     texto: '',
     editorial: 'Todos',
@@ -71,8 +77,6 @@ public totalmalos = computed(() => {
   }).length;
 });
 
-
-
   busqueda = signal<string>('');
 
  public items = computed(()=>{
@@ -96,6 +100,24 @@ public totalmalos = computed(() => {
     });
   });
 
+  public totalpaginas = computed(() => {
+    return Math.ceil(this.items().length / this.elementosPorPagina());
+  });
+
+  public itemspagina = computed(() => {
+    const pagina = this.paginaac();
+    const elementosPorPagina = this.elementosPorPagina();
+    const inicio = (pagina - 1) * elementosPorPagina;
+    const fin = inicio + elementosPorPagina;
+    return this.items().slice(inicio, fin);
+  });
+
+  public paginas = computed(() => {
+    return Array.from(
+      { length: this.totalpaginas() },
+      (_, i) => i + 1);
+  })
+
   constructor(){
     this.histori();
     this.favcarg();
@@ -105,10 +127,12 @@ public totalmalos = computed(() => {
 
   cargarheroe(heroe: any[]) {
     this.signalher.set(heroe);
+    this.paginaac.set(1); 
   }
 
   filtrosap(filtrore: any){
     this.filtros.set(filtrore);
+    this.paginaac.set(1);
   }
 
   buscregistro(busqueda: string) {
@@ -123,6 +147,29 @@ public totalmalos = computed(() => {
     return nlista;
     });
   }
+
+    cambiopag(pagina: number){
+      if(pagina < 1){
+        return;
+      }
+      if(pagina > this.totalpaginas()){
+        return;
+      }
+      this.paginaac.set(pagina);
+    }
+
+    siguipag(){
+      this.cambiopag(this.paginaac() + 1);
+    }
+
+    antpag(){
+      this.cambiopag(this.paginaac() - 1);
+    }
+
+
+    cambioranki(stat: string){
+      this.ranking.set(stat);
+    }
 
   private histori(){
     const data = localStorage.getItem('busqued');
@@ -145,6 +192,49 @@ public totalmalos = computed(() => {
       this.team.set(JSON.parse(team));
     }
   }
+
+  private stat(heroe:any, stat: string){
+    const statValue = heroe.powerstats?.[stat];
+    if(!statValue || statValue === 'null') {
+      return 0;
+    }
+
+    return Number(statValue);
+  }
+
+public rankingge = computed(()=>{
+ return[...this.signalher()]
+ .map((heroe: any)=> {
+  const total = 
+  this.stat(heroe, 'intelligence') + 
+  this.stat(heroe, 'strength') + 
+  this.stat(heroe, 'speed') + 
+  this.stat(heroe, 'durability') + 
+  this.stat(heroe, 'power') + 
+  this.stat(heroe, 'combat');
+
+  return {...heroe,totalstat: total};
+})
+.sort((a, b) => b.totalstat - a.totalstat)
+.slice(0, 5);
+});
+
+public rankingin = computed(()=>{
+  const stat = this.ranking();
+  if(stat === 'total'){
+    return this.rankingge();
+  }
+
+  return [...this.signalher()]
+  .map((heroe: any)=> {
+   const statValue = this.stat(heroe, stat);
+   return {...heroe, statValue};
+  })
+  .sort((a, b) => b.statValue - a.statValue)
+  .slice(0, 5);
+})
+
+
 
   //======
   addfav(favh:any){

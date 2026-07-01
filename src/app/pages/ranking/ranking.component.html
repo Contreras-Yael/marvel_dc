@@ -1,2 +1,54 @@
-<p>ranking works!</p>
-<!-- <p>{{heroservice.name}}</p> -->
+<h2>Ranking de héroes</h2>
+
+<div class="ranking-botones">
+ <button type="button" (click)="historial.cambioranki('total')">
+    Total
+  </button>
+
+  <button type="button" (click)="historial.cambioranki('intelligence')">
+    Inteligencia
+  </button>
+
+  <button type="button" (click)="historial.cambioranki('strength')">
+    Fuerza
+  </button>
+
+  <button type="button" (click)="historial.cambioranki('speed')">
+    Velocidad
+  </button>
+
+  <button type="button" (click)="historial.cambioranki('durability')">
+    Durabilidad
+  </button>
+
+  <button type="button" (click)="historial.cambioranki('power')">
+    Poder
+  </button>
+
+  <button type="button" (click)="historial.cambioranki('combat')">
+    Combate
+  </button>
+</div>
+
+<h3>Ranking actual: {{ historial.ranking() }}</h3>
+
+@if (historial.rankingin().length > 0) {
+  <div class="ranking-lista">
+    @for (heroe of historial.rankingin(); track heroe.id; let i = $index) {
+      <div class="ranking-item">
+        <h4>#{{ i + 1 }} - {{ heroe.name }}</h4>
+
+        @if (historial.ranking() === 'total') {
+          <p>Total stats: {{ heroe.totalStats }}</p>
+        } @else {
+          <p>{{ historial.ranking() }}: {{ heroe.valorRanking }}</p>
+        }
+
+        <img [src]="'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/' + heroe?.id + '-' + heroe?.name?.toLowerCase()?.replace(' ', '-') + '.jpg'"
+          alt="Foto de {{ heroe?.name }}">
+      </div>
+    }
+  </div>
+} @else {
+  <p>No hay héroes cargados para generar ranking.</p>
+}
