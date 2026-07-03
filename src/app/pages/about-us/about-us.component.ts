@@ -1,8 +1,8 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 import {FormGroup,FormControl,Validator, Validators} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
-
 
 @Component({
   selector: 'about-us-page',
@@ -12,35 +12,33 @@ import {ReactiveFormsModule} from '@angular/forms';
 })
 export class AboutUsComponent {
 
+    private http = inject(HttpClient);
+
   formulario = new FormGroup({
     Nombre: new FormControl('',[
-      Validators.required,
+    //  Validators.required,
       Validators.minLength(3),
     ]),
     Alias: new FormControl('',[
-      Validators.required,
+  //    Validators.required,
       Validators.minLength(3),
     ]),
     Correo : new FormControl('',[
-      Validators.required,
+//      Validators.required,
       Validators.email,
     ]),
     Poder: new FormControl('',[
-      Validators.required,
+      //Validators.required,
       Validators.min(1),
       Validators.max(100),
     ]),
     Editorial: new FormControl('',[
-      Validators.required,
+      //Validators.required,
     ]),
   });
 
-  onSubmit(){
-    if(this.formulario.valid){
-      console.info("Formulario se envio: ", this.formulario.value);
-    }else{
-      console.warn("Formulario no valido!!");
-    }
-  }
+onSubmit(){
 
 }
+}
+

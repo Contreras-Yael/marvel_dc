@@ -18,7 +18,7 @@
       </div>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <label for="Alias">Alias:</label>
     <input type="text" id="Alias" formControlName="Alias"/>
 
@@ -42,7 +42,7 @@
           Correo obligatorio
         </span>
 
-        <span *ngIf="formulario.get('Correo')?.errors?.['Correo']">
+        <span *ngIf="formulario.get('Correo')?.errors?.['email']">
           Correo corto
         </span>
     </div>
@@ -65,12 +65,12 @@
           Poder maximo 100
         </span>
     </div>
-  </div>
+  </div> -->
 
-
-  <button type="submit" ng>
-        Enviar
+  <button type="submit" [disabled]="formulario.invalid" class="btn-enviar">
+    Enviar
   </button>
+
 
 </form>
 <!-- Recomendacion, imprimir todo el formulario, en controls, se mira el estatus, rejects, posiciones entre otros -->
