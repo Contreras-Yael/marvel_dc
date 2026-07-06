@@ -1,1 +1,52 @@
-<p>heroes works!</p>
+<div class="recuadros">
+
+  <div class="section">
+  <h3>Heroes agregados</h3>
+  <div class="mosaico-fav">
+
+  @for (hero of listaHeroes ; track hero._id) {
+    <div class="card">
+
+    @if(!changs){
+      <card-hero [carta]="hero" [boton]="false">
+
+        <div class="contenido-tarjeta">
+              <h4>{{ hero.name }}</h4>
+        </div>
+       </card-hero>
+        <button class="eliminacion" (click)="borrar(hero._id)">
+          Eliminar
+        </button>
+
+        <button (click)="changecard()">
+          Editar
+        </button>
+        <!-- <button class="edicion" (click)="update(hero._id,   )">
+          Editar
+        </button> -->
+
+    }
+    @else {
+       <div class="">
+        <div class="field">
+          <label> Nombre: <strong>{{ hero.name }}</strong></label>
+
+          <input type="text" #nombretempnu [value]="hero.name" class="input-pro"/>
+        </div>
+
+          <button (click)="update(hero._id, nombretempnu.value); changecard()" style="background-color: #2ecc71;">
+          Editar
+          </button>
+
+          <button (click)="changecard()" style="background-color: #e74c3c;">
+          Cancelar
+          </button>
+       </div>
+    }
+
+    </div>
+  }
+    </div>
+  </div>
+</div>
+

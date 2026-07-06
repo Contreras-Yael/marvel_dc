@@ -30,6 +30,8 @@
           <h4>Estadísticas</h4>
           <p><strong>Poder 1-100:</strong> {{ carta?.powerstats?.['power'] }} pts</p>
         </div>
+
+        @if (boton) {
         <div class="botones_extra">
           <button class="button-fav" (click)="seleccionfav()">
             @if (carta.favoritos) {
@@ -43,7 +45,7 @@
             Agregar equipo
           </button>
         </div>
-
+        }
       </div>
 
     </div>

@@ -10,11 +10,21 @@ export class HttpServiceService {
 
   constructor(private http:HttpClient, ) {   }
 
-  public posthero = (url: string, body: any, contenType?: string): Observable<any> => this.http.post(`${environment.urlbase}${url}`,body);
+    public posthero = (url: string, body: any): Observable<any> => {
+    return this.http.post(`${environment.urlbase}${url}`, body);
+  };
     // aca se usa la url de base en este caso la creada en environment y la url extre, siendo las funciones de post entre otros,
                                             // aca solo se necesitaria revisar esta estructura pero ya tienes la idea general
-  public gethero = (url:string, contentType?: string): Observable<any> => this.http.get(`${environment.urlbase}$(url)`);
+    public gethero = (url: string): Observable<any> => {
+    return this.http.get(`${environment.urlbase}${url}`);
+  };
 
+    public deletehero = (url:string): Observable<any> =>
+    this.http.delete(`${environment.urlbase}${url}`);
+
+    public updatehero = (url: string, body: any): Observable<any> => {
+    return this.http.put(`${environment.urlbase}${url}`, body);
+  };
 
 }
 //  public postN = (url: string, body: any, contentType?: string): Observable<any> => this.http.post(`${environment.apiUrl}${url}`, body);

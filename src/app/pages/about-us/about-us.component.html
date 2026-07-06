@@ -2,31 +2,28 @@
 
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
-  <div class="field">
+<div class="field" style="cursor: pointer;">
     <label for="Nombre">Nombre:</label>
-    <input type="text" id="Nombre" formControlName="Nombre"/>
-    <div *ngIf="formulario.get('Nombre')?.invalid && formulario.get('Nombre')?.touched">
-
-      <span *ngIf="formulario.get('Nombre')?.errors?.['required']">
+    <input type="text" id="Nombre" formControlName="name"/>
+    <div *ngIf="formulario.get('name')?.invalid && formulario.get('name')?.touched">
+      <span *ngIf="formulario.get('name')?.errors?.['required']">
           Nombre obligatorio
         </span>
-
-        <span *ngIf="formulario.get('Nombre')?.errors?.['minlength']">
+        <span *ngIf="formulario.get('name')?.errors?.['minlength']">
           Nombre corto
         </span>
-
       </div>
-  </div>
+</div>
 
-  <!-- <div class="field">
-    <label for="Alias">Alias:</label>
+<div class="section-power">
+
+  <div class="field">
+    <label for="Alias">intelligence:</label>
     <input type="text" id="Alias" formControlName="Alias"/>
-
     <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
         <span *ngIf="formulario.get('Alias')?.errors?.['required']">
           Alias obligatorio
         </span>
-
         <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
           Alias muy corto
         </span>
@@ -34,30 +31,96 @@
   </div>
 
   <div class="field">
-    <label for="Correo">Correo:</label>
-    <input type="email" id="Correo" formControlName="Correo"/>
-
-    <div *ngIf="formulario.get('Correo')?.invalid && formulario.get('Correo')?.touched">
-        <span *ngIf="formulario.get('Correo')?.errors?.['required']">
-          Correo obligatorio
+    <label for="Alias">strength:</label>
+    <input type="text" id="Alias" formControlName="Alias"/>
+    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
+        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
+          Alias obligatorio
         </span>
-
-        <span *ngIf="formulario.get('Correo')?.errors?.['email']">
-          Correo corto
+        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
+          Alias muy corto
+        </span>
+    </div>
+  </div>
+  <div class="field">
+    <label for="Alias">speed:</label>
+    <input type="text" id="Alias" formControlName="Alias"/>
+    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
+        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
+          Alias obligatorio
+        </span>
+        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
+          Alias muy corto
         </span>
     </div>
   </div>
 
   <div class="field">
+    <label for="Alias">durability:</label>
+    <input type="text" id="Alias" formControlName="Alias"/>
+    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
+        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
+          Alias obligatorio
+        </span>
+        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
+          Alias muy corto
+        </span>
+    </div>
+  </div>
+  <div class="field">
+    <label for="Alias">power:</label>
+    <input type="text" id="Alias" formControlName="Alias"/>
+    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
+        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
+          Alias obligatorio
+        </span>
+        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
+          Alias muy corto
+        </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="Alias">combat:</label>
+    <input type="text" id="Alias" formControlName="Alias"/>
+    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
+        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
+          Alias obligatorio
+        </span>
+        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
+          Alias muy corto
+        </span>
+    </div>
+  </div>
+
+
+</div>
+
+<div>
+
+
+</div>
+
+<div class="field">
+    <label for="Correo">Correo:</label>
+    <input type="email" id="Correo" formControlName="Correo"/>
+    <div *ngIf="formulario.get('Correo')?.invalid && formulario.get('Correo')?.touched">
+        <span *ngIf="formulario.get('Correo')?.errors?.['required']">
+          Correo obligatorio
+        </span>
+        <span *ngIf="formulario.get('Correo')?.errors?.['email']">
+          Correo corto
+        </span>
+    </div>
+</div>
+
+<div class="field">
     <label for="Poder">Poder:</label>
     <input type="number" id="Poder" formControlName="Poder"/>
-
-
     <div *ngIf="formulario.get('Poder')?.invalid && formulario.get('Poder')?.touched">
         <span *ngIf="formulario.get('Poder')?.errors?.['required']">
           Poder obligatorio
         </span>
-
         <span *ngIf="formulario.get('Poder')?.errors?.['min']">
           Poder minimo 1
         </span>
@@ -65,12 +128,18 @@
           Poder maximo 100
         </span>
     </div>
-  </div> -->
+</div>
 
-  <button type="submit" [disabled]="formulario.invalid" class="btn-enviar">
-    Enviar
+<button type="submit" [disabled]="formulario.invalid" class="btn-enviar">
+    Enviar Datos
   </button>
 
+
+  <!-- <button *ngIf="addEmployee" class="btn btn-primary ml-2"
+    (click)="OptionsModal.type = 'ADD'; openModal(modal, null,'md'); ">
+    <i class="fa fa-plus mr-2"></i>
+    {{languageService.json_employees?.add_btn || "Agregar Empleado"}}
+  </button> -->
 
 </form>
 <!-- Recomendacion, imprimir todo el formulario, en controls, se mira el estatus, rejects, posiciones entre otros -->

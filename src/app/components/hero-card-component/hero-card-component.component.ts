@@ -19,6 +19,7 @@ export class HeroCardComponent   {
 
    @Output() team = new EventEmitter<any>();
 
+   @Input() boton : boolean = true;
 
 //  public url="https://www.superherodb.com/pictures2/portraits/10/100/167.jpg";
 

@@ -1,0 +1,20 @@
+
+.mosaico-fav{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+  padding: 10px;
+}
+.recuadros{
+  display:flex;
+  justify-content: space-between;
+}
+
+.cuadro{
+  display: flex;
+}
+
+
+.eliminacion{
+  background-color: aquamarine;
+}
