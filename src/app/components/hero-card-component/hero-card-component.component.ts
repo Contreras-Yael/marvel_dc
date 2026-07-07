@@ -21,6 +21,8 @@ export class HeroCardComponent   {
 
    @Input() boton : boolean = true;
 
+   @Input() local : boolean = false;
+
 //  public url="https://www.superherodb.com/pictures2/portraits/10/100/167.jpg";
 
   constructor(){}

@@ -4,11 +4,18 @@
   <div class="container-card">
     <div class="contenido">
 
+      @if(!local){
       <div class="imagen" style="cursor: pointer;" [routerLink]="['/Heroes', carta?.id]">
         <img [src]="'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/' + carta?.id + '-' + carta?.name?.toLowerCase()?.replace(' ', '-') + '.jpg'"
           alt="Foto de {{ carta?.name }}">
       </div>
-
+      }
+      @else{
+      <!-- <div class="imagen" style="cursor: pointer;" [routerLink]="['/Heroes', carta?.id]">
+        <img [src]="'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/' + carta?.id + '-' + carta?.name?.toLowerCase()?.replace(' ', '-') + '.jpg'"
+          alt="Foto de {{ carta?.name }}">
+      </div> -->
+      }
       <div class="bloque-derecho">
 
         <div class="data-info">
