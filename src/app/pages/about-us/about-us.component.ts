@@ -21,30 +21,73 @@ export class AboutUsComponent {
 
     private http = inject(HttpClient);
 
-  formulario = new FormGroup({
-    name: new FormControl('',[
-      Validators.required,
-      Validators.minLength(3),
-    ]),
-    Alias: new FormControl('',[
-  //    Validators.required,
-      Validators.minLength(3),
-    ]),
-    Correo : new FormControl('',[
-//      Validators.required,
-      Validators.email,
-    ]),
-    Poder: new FormControl('',[
-      //Validators.required,
+formulario = new FormGroup({
+  name: new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]),
+
+  powerstats: new FormGroup({
+    intelligence: new FormControl(1, [
       Validators.min(1),
       Validators.max(100),
     ]),
-    Editorial: new FormControl('',[
-      //Validators.required,
+    strength: new FormControl(1, [
+      Validators.min(1),
+      Validators.max(100),
     ]),
-  });
+    speed: new FormControl(1, [
+      Validators.min(1),
+      Validators.max(100),
+    ]),
+    durability: new FormControl(1, [
+      Validators.min(1),
+      Validators.max(100),
+    ]),
+    power: new FormControl(1, [
+      Validators.min(1),
+      Validators.max(100),
+    ]),
+    combat: new FormControl(1, [
+      Validators.min(1),
+      Validators.max(100),
+    ]),
+  }),
 
+  biography: new FormGroup({
+    'full-name': new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    'alter-egos': new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    'place-of-birth': new FormControl(''),
+    alignment: new FormControl(''),
+  }),
 
+  appearance: new FormGroup({
+    gender: new FormControl(''),
+    race: new FormControl(''),
+    height: new FormControl(''),
+    weight: new FormControl(''),
+    'eye-color': new FormControl(''),
+    'hair-color': new FormControl(''),
+  }),
+
+  work: new FormGroup({
+    occupation: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    base: new FormControl(''),
+  }),
+
+  image: new FormGroup({
+    url: new FormControl(''),
+  }),
+});
 
 
     onSubmit() {

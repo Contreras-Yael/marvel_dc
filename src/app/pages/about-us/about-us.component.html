@@ -1,147 +1,194 @@
-<h2> Formulario reactivo</h2>
+<h2>Formulario reactivo</h2>
 
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
-<div class="field" style="cursor: pointer;">
-    <label for="Nombre">Nombre:</label>
-    <input type="text" id="Nombre" formControlName="name"/>
+  <div class="field" style="cursor: pointer;">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" formControlName="name"/>
+
     <div *ngIf="formulario.get('name')?.invalid && formulario.get('name')?.touched">
       <span *ngIf="formulario.get('name')?.errors?.['required']">
-          Nombre obligatorio
-        </span>
-        <span *ngIf="formulario.get('name')?.errors?.['minlength']">
-          Nombre corto
-        </span>
+        Nombre obligatorio
+      </span>
+      <span *ngIf="formulario.get('name')?.errors?.['minlength']">
+        Nombre corto
+      </span>
+    </div>
+  </div>
+
+  <h3>Powerstats</h3>
+
+  <div class="section-power" formGroupName="powerstats">
+
+    <div class="field">
+      <label for="intelligence">Intelligence:</label>
+      <input type="number" id="intelligence" formControlName="intelligence"/>
+      <div *ngIf="formulario.get('powerstats.intelligence')?.invalid && formulario.get('powerstats.intelligence')?.touched">
+        <span *ngIf="formulario.get('powerstats.intelligence')?.errors?.['min']">Mínimo 1</span>
+        <span *ngIf="formulario.get('powerstats.intelligence')?.errors?.['max']">Máximo 100</span>
       </div>
+    </div>
+
+    <div class="field">
+      <label for="strength">Strength:</label>
+      <input type="number" id="strength" formControlName="strength"/>
+      <div *ngIf="formulario.get('powerstats.strength')?.invalid && formulario.get('powerstats.strength')?.touched">
+        <span *ngIf="formulario.get('powerstats.strength')?.errors?.['min']">Mínimo 1</span>
+        <span *ngIf="formulario.get('powerstats.strength')?.errors?.['max']">Máximo 100</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="speed">Speed:</label>
+      <input type="number" id="speed" formControlName="speed"/>
+      <div *ngIf="formulario.get('powerstats.speed')?.invalid && formulario.get('powerstats.speed')?.touched">
+        <span *ngIf="formulario.get('powerstats.speed')?.errors?.['min']">Mínimo 1</span>
+        <span *ngIf="formulario.get('powerstats.speed')?.errors?.['max']">Máximo 100</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="durability">Durability:</label>
+      <input type="number" id="durability" formControlName="durability"/>
+      <div *ngIf="formulario.get('powerstats.durability')?.invalid && formulario.get('powerstats.durability')?.touched">
+        <span *ngIf="formulario.get('powerstats.durability')?.errors?.['min']">Mínimo 1</span>
+        <span *ngIf="formulario.get('powerstats.durability')?.errors?.['max']">Máximo 100</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="power">Power:</label>
+      <input type="number" id="power" formControlName="power"/>
+      <div *ngIf="formulario.get('powerstats.power')?.invalid && formulario.get('powerstats.power')?.touched">
+        <span *ngIf="formulario.get('powerstats.power')?.errors?.['min']">Mínimo 1</span>
+        <span *ngIf="formulario.get('powerstats.power')?.errors?.['max']">Máximo 100</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="combat">Combat:</label>
+      <input type="number" id="combat" formControlName="combat"/>
+      <div *ngIf="formulario.get('powerstats.combat')?.invalid && formulario.get('powerstats.combat')?.touched">
+        <span *ngIf="formulario.get('powerstats.combat')?.errors?.['min']">Mínimo 1</span>
+        <span *ngIf="formulario.get('powerstats.combat')?.errors?.['max']">Máximo 100</span>
+      </div>
+    </div>
+
+  </div>
+
+  <h3>Biography</h3>
+
+  <div class="section-biography" formGroupName="biography">
+
+    <div class="field">
+      <label for="full-name">Full name:</label>
+      <input type="text" id="full-name" formControlName="full-name"/>
+      <div *ngIf="formulario.get('biography.full-name')?.invalid && formulario.get('biography.full-name')?.touched">
+        <span *ngIf="formulario.get('biography.full-name')?.errors?.['required']">Nombre completo obligatorio</span>
+        <span *ngIf="formulario.get('biography.full-name')?.errors?.['minlength']">Nombre completo corto</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="alter-egos">Alter egos:</label>
+      <input type="text" id="alter-egos" formControlName="alter-egos"/>
+      <div *ngIf="formulario.get('biography.alter-egos')?.invalid && formulario.get('biography.alter-egos')?.touched">
+        <span *ngIf="formulario.get('biography.alter-egos')?.errors?.['required']">Alter egos obligatorio</span>
+        <span *ngIf="formulario.get('biography.alter-egos')?.errors?.['minlength']">Alter egos corto</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="place-of-birth">Place of birth:</label>
+      <input type="text" id="place-of-birth" formControlName="place-of-birth"/>
+    </div>
+
+    <div class="field">
+      <label for="alignment">Alignment:</label>
+      <input type="text" id="alignment" formControlName="alignment"/>
+    </div>
+
+  </div>
+
+  <h3>Appearance</h3>
+
+  <div class="section-appearance" formGroupName="appearance">
+
+    <div class="field">
+      <label for="gender">Gender:</label>
+      <input type="text" id="gender" formControlName="gender"/>
+    </div>
+
+    <div class="field">
+      <label for="race">Race:</label>
+      <input type="text" id="race" formControlName="race"/>
+    </div>
+
+    <div class="field">
+      <label for="height">Height:</label>
+      <input type="text" id="height" formControlName="height"/>
+    </div>
+
+    <div class="field">
+      <label for="weight">Weight:</label>
+      <input type="text" id="weight" formControlName="weight"/>
+    </div>
+
+    <div class="field">
+      <label for="eye-color">Eye color:</label>
+      <input type="text" id="eye-color" formControlName="eye-color"/>
+    </div>
+
+    <div class="field">
+      <label for="hair-color">Hair color:</label>
+      <input type="text" id="hair-color" formControlName="hair-color"/>
+    </div>
+
+  </div>
+
+  <h3>Work</h3>
+
+  <div class="section-work" formGroupName="work">
+
+    <div class="field">
+      <label for="occupation">Occupation:</label>
+      <input type="text" id="occupation" formControlName="occupation"/>
+      <div *ngIf="formulario.get('work.occupation')?.invalid && formulario.get('work.occupation')?.touched">
+        <span *ngIf="formulario.get('work.occupation')?.errors?.['required']">Ocupación obligatoria</span>
+        <span *ngIf="formulario.get('work.occupation')?.errors?.['minlength']">Ocupación corta</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="base">Base:</label>
+      <input type="text" id="base" formControlName="base"/>
+    </div>
+
+  </div>
+
+<h3>Image</h3>
+
+<div class="section-image">
+
+  <div class="field">
+    <label for="image">Imagen del héroe:</label>
+    <input
+      type="file"
+      id="image"
+      accept="image/*"
+      (change)="seleccionarImagen($event)"
+    />
+  </div>
+
 </div>
 
-<div class="section-power">
-
-  <div class="field">
-    <label for="Alias">intelligence:</label>
-    <input type="text" id="Alias" formControlName="Alias"/>
-    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
-        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
-          Alias obligatorio
-        </span>
-        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
-          Alias muy corto
-        </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <label for="Alias">strength:</label>
-    <input type="text" id="Alias" formControlName="Alias"/>
-    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
-        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
-          Alias obligatorio
-        </span>
-        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
-          Alias muy corto
-        </span>
-    </div>
-  </div>
-  <div class="field">
-    <label for="Alias">speed:</label>
-    <input type="text" id="Alias" formControlName="Alias"/>
-    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
-        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
-          Alias obligatorio
-        </span>
-        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
-          Alias muy corto
-        </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <label for="Alias">durability:</label>
-    <input type="text" id="Alias" formControlName="Alias"/>
-    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
-        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
-          Alias obligatorio
-        </span>
-        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
-          Alias muy corto
-        </span>
-    </div>
-  </div>
-  <div class="field">
-    <label for="Alias">power:</label>
-    <input type="text" id="Alias" formControlName="Alias"/>
-    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
-        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
-          Alias obligatorio
-        </span>
-        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
-          Alias muy corto
-        </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <label for="Alias">combat:</label>
-    <input type="text" id="Alias" formControlName="Alias"/>
-    <div *ngIf="formulario.get('Alias')?.invalid && formulario.get('Alias')?.touched">
-        <span *ngIf="formulario.get('Alias')?.errors?.['required']">
-          Alias obligatorio
-        </span>
-        <span *ngIf="formulario.get('Alias')?.errors?.['minlength']">
-          Alias muy corto
-        </span>
-    </div>
-  </div>
-
-
-</div>
-
-<div>
-
-
-</div>
-
-<div class="field">
-    <label for="Correo">Correo:</label>
-    <input type="email" id="Correo" formControlName="Correo"/>
-    <div *ngIf="formulario.get('Correo')?.invalid && formulario.get('Correo')?.touched">
-        <span *ngIf="formulario.get('Correo')?.errors?.['required']">
-          Correo obligatorio
-        </span>
-        <span *ngIf="formulario.get('Correo')?.errors?.['email']">
-          Correo corto
-        </span>
-    </div>
-</div>
-
-<div class="field">
-    <label for="Poder">Poder:</label>
-    <input type="number" id="Poder" formControlName="Poder"/>
-    <div *ngIf="formulario.get('Poder')?.invalid && formulario.get('Poder')?.touched">
-        <span *ngIf="formulario.get('Poder')?.errors?.['required']">
-          Poder obligatorio
-        </span>
-        <span *ngIf="formulario.get('Poder')?.errors?.['min']">
-          Poder minimo 1
-        </span>
-        <span *ngIf="formulario.get('Poder')?.errors?.['max']">
-          Poder maximo 100
-        </span>
-    </div>
-</div>
-
-<button type="submit" [disabled]="formulario.invalid" class="btn-enviar">
+  <button type="submit" [disabled]="formulario.invalid" class="btn-enviar">
     Enviar Datos
   </button>
 
-
-  <!-- <button *ngIf="addEmployee" class="btn btn-primary ml-2"
-    (click)="OptionsModal.type = 'ADD'; openModal(modal, null,'md'); ">
-    <i class="fa fa-plus mr-2"></i>
-    {{languageService.json_employees?.add_btn || "Agregar Empleado"}}
-  </button> -->
-
 </form>
+
+
 <!-- Recomendacion, imprimir todo el formulario, en controls, se mira el estatus, rejects, posiciones entre otros -->
  <!-- Internamente, componentes compartidos, en una carpeta shared, en la raiz, components en raiz, pero de uso
   cosas de uso mayor, aun falta ver si se usa dentro de raiz o otro lado -->

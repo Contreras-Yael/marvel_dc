@@ -111,21 +111,35 @@ label.light {
   }
 
 
-.section-power{
- display: grid;
+.section-power,
+.section-biography,
+.section-appearance,
+.section-work,
+.section-image {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   background-color: #f4f7f8;
   padding: 15px;
   border-radius: 6px;
   margin-bottom: 30px;
-
 }
-.section-power .field {
+
+.section-power .field,
+.section-biography .field,
+.section-appearance .field,
+.section-work .field,
+.section-image .field {
   display: flex;
   flex-direction: column;
 }
-.section-power input[type="text"] {
+
+.section-power input[type="text"],
+.section-power input[type="number"],
+.section-biography input[type="text"],
+.section-appearance input[type="text"],
+.section-work input[type="text"],
+.section-image input[type="text"] {
   width: 100%;
   max-width: 100%;
   margin-bottom: 5px;
