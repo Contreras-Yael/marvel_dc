@@ -14,12 +14,14 @@ import { environment } from '../../../environments/environment.development';
 })
 export class AboutUsComponent {
 
+  public image : File | null = null;
+
   constructor(
     public lineservice : HttpServiceService,
   ){
   }
 
-    private http = inject(HttpClient);
+private http = inject(HttpClient);
 
 formulario = new FormGroup({
   name: new FormControl('', [
@@ -90,24 +92,54 @@ formulario = new FormGroup({
 });
 
 
+onFileSelected(event: any) {
+  const archivoInput = event.target.files;
+  if (archivoInput && archivoInput.length > 0) {
+    this.image = archivoInput[0];
+  }
+}
     onSubmit() {
-
     const endpo = environment.endpoints.saveHero;
-
     if (this.formulario.invalid) return;
 
     console.info("connectando", this.formulario.value);
 
     this.lineservice.posthero(endpo, this.formulario.value).subscribe({
       next: (respuesta) => {
-        alert('funco');
-        this.formulario.reset({ Editorial: 'Todos' });
+      const id = respuesta.herosav?._id || respuesta.hero?._id;
+
+        if(this.image && id){
+        const multimedia = new FormData();
+        multimedia.append('file', this.image);
+
+          const enpofot = `/heroes/upload/${id}`;
+
+        this.lineservice.updatehero(enpofot, multimedia).subscribe({
+          next: (resMultimedia) => {
+            alert('se guardo la image');
+            this.eraseform();
+          },
+          error: (errMulti) => {
+            console.error('Fallo el guardado:', errMulti);
+            alert('⚠ se creo pero fallo.');
+          }
+        });
+        alert('Se guardo correctamente el personaje');
+        }
+
       },
       error: (err) => {
-        console.error('no funco', err);
-        alert('no funco');
+        console.error('No se pudo subir el formulario', err);
+        alert('No se logro subir el formulario');
       }
     });
   }
+
+eraseform() {
+  this.formulario.reset();
+  this.image = null;
+}
+
+
 
 }

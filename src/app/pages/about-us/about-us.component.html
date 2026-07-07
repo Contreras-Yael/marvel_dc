@@ -172,17 +172,12 @@
 
   <div class="field">
     <label for="image">Imagen del héroe:</label>
-    <input
-      type="file"
-      id="image"
-      accept="image/*"
-      (change)="seleccionarImagen($event)"
-    />
+    <input type="file" id="image"  (change)="onFileSelected($event)" accept="image/*"/>
   </div>
 
 </div>
 
-  <button type="submit" [disabled]="formulario.invalid" class="btn-enviar">
+  <button type="submit" style="cursor:pointer;" [disabled]="formulario.invalid" class="btn-enviar">
     Enviar Datos
   </button>
 

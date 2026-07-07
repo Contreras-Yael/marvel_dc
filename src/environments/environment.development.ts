@@ -11,6 +11,7 @@ export const environment = {
     detailHero:  '/heroes/herolist/',
     updateHero:  '/heroes/update',
     deleteHero:  '/heroes/delete/'
+
   }
 
 };
