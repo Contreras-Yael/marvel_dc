@@ -2,11 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HeroCardComponent } from '../../components/hero-card-component/hero-card-component.component';
 import { environment } from '../../../environments/environment.development';
 import { HttpServiceService } from '../../services/http-service.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'heroes-page',
-  imports: [HeroCardComponent],
+  standalone: true,
+  imports: [HeroCardComponent, ReactiveFormsModule],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })
@@ -15,7 +16,7 @@ export class HeroesComponent implements OnInit{
 
   public listaHeroes: any[] = [];
 
-  public changs: boolean =false;
+  public changs: any = null;
 
   constructor(public lineservice : HttpServiceService){}
 
@@ -60,26 +61,40 @@ borrar(idhero: string){
   });
 }
 
-update(idhero: string, datos : any){
+update() {
+  if (this.formulario.invalid) {
+    this.formulario.markAllAsTouched();
+    return;
+  }
   const enpo = environment.endpoints.updateHero;
- const datoscam = {id: idhero, name: datos };
-    this.lineservice.updatehero(enpo, datoscam).subscribe({
-    next:(respuesta: any)=>{
-       this.getherolist();
-       console.log(datos)
+  const datoscam = {
+    id: this.changs._id,
+    name: this.formulario.value.name
+  };
+  this.lineservice.updatehero(enpo, datoscam).subscribe({
+    next: (respuesta: any) => {
+      this.getherolist();
+      this.changecard();
+      console.log(datoscam);
     },
-    error:(err)=>{
+    error: (err) => {
       console.error('no funciono', err);
-       console.log("llega id? 1  ", idhero)
-
-       console.log(datos)
+      console.log("llega id?", this.changs?._id);
+      console.log(datoscam);
     }
   });
 }
 
-changecard(){
-  console.log("Se activo el card?");
-  this.changs = !this.changs;
+changecard(hero?: any) {
+  if (hero) {
+    this.changs = hero;
+    this.formulario.patchValue({
+      name: hero.name
+    });
+    return;
+  }
+  this.changs = null;
+  this.formulario.reset();
 }
 
 }

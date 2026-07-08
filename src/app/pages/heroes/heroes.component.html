@@ -1,52 +1,62 @@
 <div class="recuadros">
 
   <div class="section">
-  <h3>Heroes agregados</h3>
-  <div class="mosaico-fav">
+    <h3>Heroes agregados</h3>
 
-  @for (hero of listaHeroes ; track hero._id) {
-    <div class="card">
+    <div class="mosaico-fav">
 
-    @if(!changs){
-      <card-hero [carta]="hero" [boton]="false" [local]="true">
+      @for (hero of listaHeroes; track hero._id) {
+        <div class="card">
 
-        <div class="contenido-tarjeta">
+          <card-hero [carta]="hero" [boton]="false" [local]="true">
+            <div class="contenido-tarjeta">
               <h4>{{ hero.name }}</h4>
-        </div>
-       </card-hero>
-        <button class="eliminacion" (click)="borrar(hero._id)">
-          Eliminar
-        </button>
+            </div>
+          </card-hero>
 
-        <button (click)="changecard()">
-          Editar
-        </button>
-        <!-- <button class="edicion" (click)="update(hero._id,   )">
-          Editar
-        </button> -->
-
-    }
-    @else {
-       <div class="">
-        <div class="field">
-          <label> Nombre: <strong>{{ hero.name }}</strong></label>
-
-          <input type="text" #nombretempnu [value]="hero.name" class="input-pro"/>
-        </div>
-
-          <button (click)="update(hero._id, nombretempnu.value); changecard()" style="background-color: #2ecc71;">
-          Editar
+          <button class="eliminacion" (click)="borrar(hero._id)">
+            Eliminar
           </button>
 
-          <button (click)="changecard()" style="background-color: #e74c3c;">
-          Cancelar
+          <button (click)="changecard(hero)">
+            Editar
           </button>
-       </div>
-    }
 
-    </div>
-  }
+        </div>
+      }
+
     </div>
   </div>
+
 </div>
 
+@if (changs) {
+  <div class="modal-fondo">
+
+    <div class="modal-card">
+
+      <h3>Editar héroe</h3>
+
+      <form [formGroup]="formulario" (ngSubmit)="update()">
+
+        <div class="field">
+          <label>Nombre:</label>
+          <input type="text" formControlName="name">
+        </div>
+
+        <div class="botones-modal">
+          <button type="submit" [disabled]="formulario.invalid">
+            Guardar
+          </button>
+
+          <button type="button" (click)="changecard()">
+            Cancelar
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+}
