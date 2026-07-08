@@ -103,9 +103,22 @@
       <input type="text" id="place-of-birth" formControlName="place-of-birth"/>
     </div>
 
+   <div class="field">
+    <label for="alignment">Alignment:</label>
+        <select id="alignment" formControlName="alignment">
+          <option value="Ninguno" selected>Neutro</option>
+          <option value="good">Bueno</option>
+          <option value="bad">Malo</option>
+        </select>
+    </div>
+
     <div class="field">
-      <label for="alignment">Alignment:</label>
-      <input type="text" id="alignment" formControlName="alignment"/>
+    <label for="publisher">Publisher:</label>
+        <select id="publisher" formControlName="publisher">
+          <option value="Ninguno" selected>Ninguno</option>
+          <option value="Marvel Comics">Marvel Comics</option>
+          <option value="DC Comics">DC</option>
+        </select>
     </div>
 
   </div>

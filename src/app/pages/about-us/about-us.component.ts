@@ -67,6 +67,7 @@ formulario = new FormGroup({
     ]),
     'place-of-birth': new FormControl(''),
     alignment: new FormControl(''),
+    publisher: new FormControl(''),
   }),
 
   appearance: new FormGroup({
@@ -98,42 +99,50 @@ onFileSelected(event: any) {
     this.image = archivoInput[0];
   }
 }
-    onSubmit() {
-    const endpo = environment.endpoints.saveHero;
-    if (this.formulario.invalid) return;
+onSubmit() {
+  const endpo = environment.endpoints.saveHero;
+  if (this.formulario.invalid) return;
+  if (this.image) {
+    const formatosPermitidos = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+    if (!formatosPermitidos.includes(this.image.type)) {
+      alert('Solo se permiten formatos PNG, JPG, JPEG o GIF, el resto no es valido, use otra imagen.');
+      return;
+    }
+  }
+  this.lineservice.posthero(endpo, this.formulario.value).subscribe({
 
-    console.info("connectando", this.formulario.value);
-
-    this.lineservice.posthero(endpo, this.formulario.value).subscribe({
-      next: (respuesta) => {
+    next: (respuesta) => {
       const id = respuesta.herosav?._id || respuesta.hero?._id;
+      if (this.image && id) {
 
-        if(this.image && id){
         const multimedia = new FormData();
+
         multimedia.append('file', this.image);
 
-          const enpofot = `/heroes/upload/${id}`;
+        const enpofot = `/heroes/upload/${id}`;
 
         this.lineservice.updatehero(enpofot, multimedia).subscribe({
           next: (resMultimedia) => {
-            alert('se guardo la image');
+            alert('Se guardó correctamente el personaje y su imagen');
             this.eraseform();
           },
           error: (errMulti) => {
             console.error('Fallo el guardado:', errMulti);
-            alert('⚠ se creo pero fallo.');
+            alert('⚠ El personaje se creó, pero falló la subida de la imagen en el servidor.');
           }
         });
-        alert('Se guardo correctamente el personaje');
-        }
-
-      },
-      error: (err) => {
-        console.error('No se pudo subir el formulario', err);
-        alert('No se logro subir el formulario');
+      } else {
+        alert('Se guardó correctamente el personaje, no tiene imagen');
+        this.eraseform();
       }
-    });
-  }
+    },
+    error: (err) => {
+      console.error('No se pudo subir el formulario', err);
+      alert('No se logró subir el formulario');
+    }
+  });
+}
+
 
 eraseform() {
   this.formulario.reset();
