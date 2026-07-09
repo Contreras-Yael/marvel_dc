@@ -128,7 +128,7 @@ onSubmit() {
           },
           error: (errMulti) => {
             console.error('Fallo el guardado:', errMulti);
-            alert('⚠ El personaje se creó, pero falló la subida de la imagen en el servidor.');
+            alert('Se creo pero no se subio al servidor la imagen.');
           }
         });
       } else {
