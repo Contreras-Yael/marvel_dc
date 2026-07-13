@@ -19,11 +19,6 @@ export class HttpServiceService {
     return this.http.get(`${environment.urlbase}${url}`);
   };
 
-  public gethero = (url: string): Observable<any> => {
-    return this.http.get(`${environment.urlbase}${url}`);
-  };
-
-
     public deletehero = (url:string): Observable<any> =>
     this.http.delete(`${environment.urlbase}${url}`);
 
