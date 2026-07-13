@@ -13,7 +13,18 @@ import { RouterLink } from '@angular/router';
 })
 export class HeroCardComponent   {
 
-  @Input() carta: any;
+   @Input()
+  set client(valor: any) {
+    this._client = valor;
+    if (valor) {
+      console.log('Mongoclient sirve [client]! Datos:', valor);
+    }
+  }
+  get client(): any {
+    return this._client;
+  }
+
+   @Input() carta: any;
 
    @Output() favorito = new EventEmitter<any>();
 
@@ -23,7 +34,12 @@ export class HeroCardComponent   {
 
    @Input() local : boolean = false;
 
+    private _client: any;
+
+
 //  public url="https://www.superherodb.com/pictures2/portraits/10/100/167.jpg";
+
+
 
   constructor(){}
   seleccionfav(){

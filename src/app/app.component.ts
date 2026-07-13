@@ -4,6 +4,7 @@ import { HeroListComponent } from './components/hero-list-component/hero-list-co
 import { HeroCardComponent } from './components/hero-card-component/hero-card-component.component';
 import { SearchBarComponent } from './components/search-bar-component/search-bar-component.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HeroCliComponent } from './components/hero-cli/hero-cli.component';
 @Component({
   selector: 'app-root',
   imports: [
@@ -11,7 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HeroCardComponent,
     HeroListComponent,
     SearchBarComponent,
-    NavbarComponent],
+    NavbarComponent,
+    HeroCliComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

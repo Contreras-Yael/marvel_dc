@@ -1,0 +1,13 @@
+<div>
+  @for (item of arr_cli; track item._id) {
+
+    <card-hero
+      [client]="item"
+      [local]="false"
+      [boton]="false">
+    </card-hero>
+
+  } @empty {
+    <p>Cargando héroes desde el MongoClient local</p>
+  }
+</div>

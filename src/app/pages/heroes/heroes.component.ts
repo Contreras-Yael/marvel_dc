@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { HeroCardComponent } from '../../components/hero-card-component/hero-card-component.component';
 import { environment } from '../../../environments/environment.development';
 import { HttpServiceService } from '../../services/http-service.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Client_m_service } from '../../services/client-m.service';
+
 
 @Component({
   selector: 'heroes-page',
@@ -18,6 +20,9 @@ export class HeroesComponent implements OnInit{
 
   public changs: any = null;
 
+  public clien_li = inject(Client_m_service);
+  public arrgo : any[] = [];
+
   constructor(public lineservice : HttpServiceService){}
 
     formulario = new FormGroup({
@@ -31,6 +36,7 @@ export class HeroesComponent implements OnInit{
 
   ngOnInit(): void {
     this.getherolist();
+    this.cargaclien();
   }
 
 getherolist(){
@@ -47,6 +53,21 @@ getherolist(){
     }
   });
 }
+
+
+cargaclien(){
+  this.clien_li.list_cli().subscribe({
+    next:(data) =>{
+      this.arrgo = data;
+      console.log('Carga los elementos de client');
+    },error:(error) =>{
+      console.error('Error carga', error);
+    }
+  });
+}
+
+
+
 
 borrar(idhero: string){
   const enpo = environment.endpoints.deleteHero + idhero;
