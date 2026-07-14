@@ -10,8 +10,13 @@ export const environment = {
     listHeroes:  '/heroes/herolist',
     detailHero:  '/heroes/herolist/',
     updateHero:  '/heroes/update',
-    deleteHero:  '/heroes/delete/'
+    deleteHero:  '/heroes/delete/',
+
+    segundud: '/test/herolist',
 
   }
 
 };
+
+//mongoclient
+//validexpress

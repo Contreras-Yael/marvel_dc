@@ -13,7 +13,7 @@ export class ApiheroService {
 
   private http = inject(HttpClient);
 
-  private url_sup = 'http://localhost:3000/api/heroes';
+  private url_sup = 'http://localhost:3000/api/heroes-internet';
 
   private herosig = signal<any[]>([]);
 
@@ -22,6 +22,10 @@ export class ApiheroService {
  sups_list():Observable<any[]>{
   return this.http.get<any[]>(this.url_sup)
  }
+
+sups_ind(id: string): Observable<any>{
+return this.http.get(`http://localhost:3000/api/heroes-internet/${id}`);
+}
 
  busc(){
     this.sups_list().subscribe({
