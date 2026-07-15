@@ -33,20 +33,3 @@ export class DetalleHerComponent implements OnInit{
 }
 
 }
-
-
-
-    // if (heroeId) {
-    //   console.log('🚀 Optimizando carga. Pidiendo solo el ID:', heroeId);
-
-    //   // 🔥 LLAMADA OPTIMIZADA: Trae directo un solo objeto de milisegundos
-    //   this.api.obtenerUnSoloHeroe(heroeId).subscribe({
-    //     next: (heroeEncontrado) => {
-    //       this.seleonher = heroeEncontrado;
-    //       console.log('✅ Personaje único cargado al instante:', this.seleonher);
-    //     },
-    //     error: (err) => {
-    //       console.error('Error al traer el detalle del héroe:', err);
-    //     }
-    //   });
-    // }

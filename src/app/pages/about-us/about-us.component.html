@@ -21,7 +21,7 @@
   <div class="section-power" formGroupName="powerstats">
 
     <div class="field">
-      <label for="intelligence">Intelligence:</label>
+      <label for="intelligence">Inteligencia:</label>
       <input type="number" id="intelligence" formControlName="intelligence"/>
       <div *ngIf="formulario.get('powerstats.intelligence')?.invalid && formulario.get('powerstats.intelligence')?.touched">
         <span *ngIf="formulario.get('powerstats.intelligence')?.errors?.['min']">Mínimo 1</span>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="field">
-      <label for="strength">Strength:</label>
+      <label for="strength">Fuerza:</label>
       <input type="number" id="strength" formControlName="strength"/>
       <div *ngIf="formulario.get('powerstats.strength')?.invalid && formulario.get('powerstats.strength')?.touched">
         <span *ngIf="formulario.get('powerstats.strength')?.errors?.['min']">Mínimo 1</span>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="field">
-      <label for="speed">Speed:</label>
+      <label for="speed">Velocidad:</label>
       <input type="number" id="speed" formControlName="speed"/>
       <div *ngIf="formulario.get('powerstats.speed')?.invalid && formulario.get('powerstats.speed')?.touched">
         <span *ngIf="formulario.get('powerstats.speed')?.errors?.['min']">Mínimo 1</span>
@@ -48,7 +48,7 @@
     </div>
 
     <div class="field">
-      <label for="durability">Durability:</label>
+      <label for="durability">Resistencia:</label>
       <input type="number" id="durability" formControlName="durability"/>
       <div *ngIf="formulario.get('powerstats.durability')?.invalid && formulario.get('powerstats.durability')?.touched">
         <span *ngIf="formulario.get('powerstats.durability')?.errors?.['min']">Mínimo 1</span>
@@ -57,7 +57,7 @@
     </div>
 
     <div class="field">
-      <label for="power">Power:</label>
+      <label for="power">Poder:</label>
       <input type="number" id="power" formControlName="power"/>
       <div *ngIf="formulario.get('powerstats.power')?.invalid && formulario.get('powerstats.power')?.touched">
         <span *ngIf="formulario.get('powerstats.power')?.errors?.['min']">Mínimo 1</span>
@@ -66,7 +66,7 @@
     </div>
 
     <div class="field">
-      <label for="combat">Combat:</label>
+      <label for="combat">Habilidad de combate:</label>
       <input type="number" id="combat" formControlName="combat"/>
       <div *ngIf="formulario.get('powerstats.combat')?.invalid && formulario.get('powerstats.combat')?.touched">
         <span *ngIf="formulario.get('powerstats.combat')?.errors?.['min']">Mínimo 1</span>
@@ -81,7 +81,7 @@
   <div class="section-biography" formGroupName="biography">
 
     <div class="field">
-      <label for="full-name">Full name:</label>
+      <label for="full-name">Nombre completo:</label>
       <input type="text" id="full-name" formControlName="full-name"/>
       <div *ngIf="formulario.get('biography.full-name')?.invalid && formulario.get('biography.full-name')?.touched">
         <span *ngIf="formulario.get('biography.full-name')?.errors?.['required']">Nombre completo obligatorio</span>
@@ -99,12 +99,12 @@
     </div>
 
     <div class="field">
-      <label for="place-of-birth">Place of birth:</label>
+      <label for="place-of-birth">Lugar de nacimiento:</label>
       <input type="text" id="place-of-birth" formControlName="place-of-birth"/>
     </div>
 
    <div class="field">
-    <label for="alignment">Alignment:</label>
+    <label for="alignment">Moral:</label>
         <select id="alignment" formControlName="alignment">
           <option value="Ninguno" selected>Neutro</option>
           <option value="good">Bueno</option>
@@ -113,7 +113,7 @@
     </div>
 
     <div class="field">
-    <label for="publisher">Publisher:</label>
+    <label for="publisher">Publicadora:</label>
         <select id="publisher" formControlName="publisher">
           <option value="Ninguno" selected>Ninguno</option>
           <option value="Marvel Comics">Marvel Comics</option>
@@ -123,48 +123,48 @@
 
   </div>
 
-  <h3>Appearance</h3>
+  <h3>Apariencia</h3>
 
   <div class="section-appearance" formGroupName="appearance">
 
     <div class="field">
-      <label for="gender">Gender:</label>
+      <label for="gender">Genero:</label>
       <input type="text" id="gender" formControlName="gender"/>
     </div>
 
     <div class="field">
-      <label for="race">Race:</label>
+      <label for="race">Raza:</label>
       <input type="text" id="race" formControlName="race"/>
     </div>
 
     <div class="field">
-      <label for="height">Height:</label>
+      <label for="height">Altura:</label>
       <input type="text" id="height" formControlName="height"/>
     </div>
 
     <div class="field">
-      <label for="weight">Weight:</label>
+      <label for="weight">Peso:</label>
       <input type="text" id="weight" formControlName="weight"/>
     </div>
 
     <div class="field">
-      <label for="eye-color">Eye color:</label>
+      <label for="eye-color">Color de ojos:</label>
       <input type="text" id="eye-color" formControlName="eye-color"/>
     </div>
 
     <div class="field">
-      <label for="hair-color">Hair color:</label>
+      <label for="hair-color">Color de cabello:</label>
       <input type="text" id="hair-color" formControlName="hair-color"/>
     </div>
 
   </div>
 
-  <h3>Work</h3>
+  <h3>Trabajo</h3>
 
   <div class="section-work" formGroupName="work">
 
     <div class="field">
-      <label for="occupation">Occupation:</label>
+      <label for="occupation">Ocupacion:</label>
       <input type="text" id="occupation" formControlName="occupation"/>
       <div *ngIf="formulario.get('work.occupation')?.invalid && formulario.get('work.occupation')?.touched">
         <span *ngIf="formulario.get('work.occupation')?.errors?.['required']">Ocupación obligatoria</span>
@@ -179,7 +179,7 @@
 
   </div>
 
-<h3>Image</h3>
+<h3>Imagen</h3>
 
 <div class="section-image">
 

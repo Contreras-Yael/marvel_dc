@@ -27,7 +27,7 @@ cargahero(){
     next:(data) => {
       this.heroService = data;
       this.historialbusc.cargarheroe(data);
-      console.log('Cargado o eso parece', this.heroService);
+      console.log('Se conecto a la api');
     },
     error:(error) => {
       console.error('Error al cargar los héroes:', error);

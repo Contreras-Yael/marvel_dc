@@ -19,12 +19,17 @@ export class ApiheroService {
 
   heroe = this.herosig.asReadonly();
 
+
+
+
  sups_list():Observable<any[]>{
   return this.http.get<any[]>(this.url_sup)
  }
 
 sups_ind(id: string): Observable<any>{
-return this.http.get(`http://localhost:3000/api/heroes-internet/${id}`);
+return this.http.get(`https://www.superheroapi.com/api.php/2f648a02029473f5456a17a6cf18f0fb/${id}`);
+//https://www.superheroapi.com/api.php/2f648a02029473f5456a17a6cf18f0fb
+//http://localhost:3000/api/heroes-internet/${id}
 }
 
  busc(){

@@ -17,7 +17,7 @@ export class HeroCardComponent   {
   set client(valor: any) {
     this._client = valor;
     if (valor) {
-      console.log('Mongoclient sirve [client]! Datos:', valor);
+      // console.log('Mongoclient sirve [client]! Datos:', valor);
     }
   }
   get client(): any {
