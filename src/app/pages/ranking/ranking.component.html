@@ -32,9 +32,11 @@
 
 <h3>Ranking actual: {{ historial.ranking() }}</h3>
 
+
 @if (historial.rankingin().length > 0) {
   <div class="ranking-lista">
     @for (heroe of historial.rankingin(); track heroe.id; let i = $index) {
+      <card-hero [carta]="heroe" [boton]="false" [local]="false">
       <div class="ranking-item">
         <h4>#{{ i + 1 }} - {{ heroe.name }}</h4>
 
@@ -47,8 +49,11 @@
         <img [src]="'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/' + heroe?.id + '-' + heroe?.name?.toLowerCase()?.replace(' ', '-') + '.jpg'"
           alt="Foto de {{ heroe?.name }}">
       </div>
+      </card-hero>
     }
   </div>
 } @else {
   <p>No hay héroes cargados para generar ranking.</p>
 }
+
+

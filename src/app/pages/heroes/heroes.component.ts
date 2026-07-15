@@ -66,9 +66,6 @@ cargaclien(){
   });
 }
 
-
-
-
 borrar(idhero: string){
   const enpo = environment.endpoints.deleteHero + idhero;
   this.lineservice.deletehero(enpo).subscribe({
