@@ -66,15 +66,15 @@ cargaclien(){
   });
 }
 
-borrar(idhero: string){
+borrar(idhero: string) {
   const enpo = environment.endpoints.deleteHero + idhero;
+
   this.lineservice.deletehero(enpo).subscribe({
-    next:(respuesta)=>{
-      this.listaHeroes = respuesta.herosav;
-       this.getherolist();
+    next: () => {
+      this.cargaclien();
     },
-    error:(err)=>{
-      console.error('no funciono', err);
+    error: (err) => {
+      console.error('No funcionó', err);
     }
   });
 }
@@ -91,7 +91,7 @@ update() {
   };
   this.lineservice.updatehero(enpo, datoscam).subscribe({
     next: (respuesta: any) => {
-      this.getherolist();
+      this.cargaclien();
       this.changecard();
       console.log(datoscam);
     },
