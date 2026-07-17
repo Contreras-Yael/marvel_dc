@@ -1,63 +1,96 @@
+
 @if (carta) {
-<div class="card" [class.borde-dc]="carta?.biography?.['publisher'] === 'DC Comics'" [class.borde-marvel]="carta?.biography?.['publisher'] === 'Marvel Comics'" >
+
+<div class="mosaico">
+  <div class="card" [class.borde-dc]="carta?.biography?.['publisher'] === 'DC Comics'" [class.borde-marvel]="carta?.biography?.['publisher'] === 'Marvel Comics'" >
 
   <div class="container-card">
     <div class="contenido">
 
-      @if(!local){
+      @if (local === false) {
       <div class="imagen" style="cursor: pointer;" [routerLink]="['/Heroes', carta?.id]">
         <img [src]="'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/' + carta?.id + '-' + carta?.name?.toLowerCase()?.replace(' ', '-') + '.jpg'"
-          alt="Foto de {{ carta?.name }}">
+            alt="Foto de {{ carta?.name }}">
       </div>
-      }
-      @else{
-     <div class="imagen imagen-local" style="cursor: pointer;">
-      <img
-        [src]="'http://localhost:3000/api/heroes-internet/image/' + carta?.image?.url"
-        alt="Foto de {{ carta?.name }}">
-     </div>
-      }
+    } @else if (local === true) {
+      <div class="imagen imagen-local" style="cursor: pointer;">
+        <img
+          [src]="'http://localhost:3000/api/heroes/image/' + carta?.image?.url"
+          alt="Foto de {{ carta?.name }}"
+          (error)="manejarErrorImagen($event)">
+      </div>
+  } @else {
+      <div class="imagen imagen-local" style="cursor: pointer;">
+        <img [src]="'https://i.pinimg.com/736x/d5/3d/0b/d53d0b7f3cda265358fe712e4d2d45d4.jpg'">
+      </div>
+    }
       <div class="bloque-derecho">
 
         <div class="data-info">
-          <h4>Descripción</h4>
+          <p>Descripción</p>
           <p><strong>Nombre completo:</strong> {{carta?.name}}</p>
 
           @switch (carta?.biography?.['publisher']) {
             @case ('DC Comics') {
-              <h4 class="DC"><b>{{carta?.nombre}} {{carta?.biography?.['publisher'] | emogi}}</b></h4>
+              <p class="DC"><b>{{carta?.nombre}} {{carta?.biography?.['publisher'] | emogi}}</b></p>
             }
             @case ('Marvel Comics') {
-              <h4 class="Marvel"><b>{{carta?.nombre}} {{carta?.biography?.['publisher'] | emogi}}</b></h4>
+              <p class="Marvel"><b>{{carta?.nombre}} {{carta?.biography?.['publisher'] | emogi}}</b></p>
             }
           }
 
           <p><strong>Alter ego:</strong> {{ carta?.biography?.['alter-egos'] }}</p>
           <p><strong>Editorial:</strong> {{ carta?.biography?.['publisher'] }}</p>
 
-          <h4>Estadísticas</h4>
+          <p>Estadísticas</p>
           <p><strong>Poder 1-100:</strong> {{ carta?.powerstats?.['power'] }} pts</p>
         </div>
 
-        @if (boton) {
-        <div class="botones_extra">
-          <button class="button-fav" (click)="seleccionfav()">
-            @if (carta.favoritos) {
-              quitar
-            } @else {
-              agregar a favoritos
-            }
-          </button>
 
-          <button class="button-fav" (click)="selectteam()">
-            Agregar equipo
+        @switch (tipo) {
+          @case ('1') {
+          @if (boton) {
+          <div class="botones_extra">
+            <button class="button-fav" (click)="seleccionfav()" [ngStyle]="{ 'background-color': favbool ? '#a0a0a0' : '#ffff'}">
+              @if (favbool) {
+                quitar
+              } @else {
+                agregar a favoritos
+              }
+            </button>
+            <button class="button-fav" (click)="selectteam()" [ngStyle]="{ 'background-color': teambool ? '#a0a0a0' : '#ffff'}">
+              @if (teambool) {
+                ya esta en equipo
+              } @else {
+                agregar a a equipos
+              }
+            </button>
+          </div>
+        }
+        }
+        @case ('2') {
+        <div class="botones_extra">
+          <button class="button-fav" (click)="seleccionfav()" style="background-color: #dc3545; color: white;">
+            Quitar de Favoritos
           </button>
         </div>
+          }
+          @case ('3') {
+                    <div class="botones_extra">
+          <button class="button-fav" (click)="selectteam()" style="background-color: #dc3545; color: white;">
+            Quitar de Equipo
+          </button>
+        </div>
+          }
         }
+
+
       </div>
 
     </div>
   </div>
 
 </div>
+</div>
+
 }

@@ -1,20 +1,60 @@
-<section class="stats">
-  <div class="stat-card">
-    <span><strong>Total héroes: </strong>{{ historial.totalheroes() }}, </span>
-    <span><strong>TResultados: </strong>{{ historial.totalresultados() }}, </span>
-    <span><strong>TBúsquedas:</strong> {{ historial.totalbusc() }}, </span>
-    <span><strong>TFavoritos:</strong> {{ historial.totalfav() }}  &sbquo;</span>
-    <span><strong>TEquipo: </strong>{{ historial.totalteam() }}, </span>
-    <span><strong>TMarvel:</strong> {{ historial.totalmarvel() }}, </span>
-    <span><strong>TDC: </strong>{{ historial.totaldc() }}  &sbquo;</span>
-    <span><strong>TBuenos:</strong> {{ historial.totalbuenos() }}, </span>
-    <span><strong>TMalos:</strong> {{ historial.totalmalos() }}  &sbquo;</span>
+
+<section class="p-2">
+
+  <div class="d-flex flex-wrap gap-2">
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">Total héroes</small>
+      <strong class="text-dark">{{ historial.totalheroes() }}</strong>
+    </div>
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">Resultados</small>
+      <strong class="text-dark">{{ historial.totalresultados() }}</strong>
+    </div>
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">Búsquedas</small>
+      <strong class="text-dark">{{ historial.totalbusc() }}</strong>
+    </div>
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">Favoritos</small>
+      <strong class="text-primary">{{ historial.totalfav() }}</strong>
+    </div>
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">Equipo</small>
+      <strong class="text-success">{{ historial.totalteam() }}</strong>
+    </div>
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">Marvel</small>
+      <strong class="text-dark">{{ historial.totalmarvel() }}</strong>
+    </div>
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">DC</small>
+      <strong class="text-dark">{{ historial.totaldc() }}</strong>
+    </div>
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">Buenos</small>
+      <strong class="text-dark">{{ historial.totalbuenos() }}</strong>
+    </div>
+
+    <div class="bg-light border rounded px-2 py-1 text-center">
+      <small class="text-muted d-block">Malos</small>
+      <strong class="text-dark">{{ historial.totalmalos() }}</strong>
+    </div>
+
   </div>
 </section>
 
 
+
 <section class="historial">
-  <h3>Últimas búsquedas: </h3>
+  <h6>Últimas búsquedas: </h6>
   @if (historial.busquedhis().length > 0) {
     @for (busqueda of historial.busquedhis(); track $index) {
       <p>- {{ busqueda }}</p>

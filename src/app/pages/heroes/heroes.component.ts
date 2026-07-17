@@ -58,7 +58,7 @@ getherolist(){
 cargaclien(){
   this.clien_li.list_cli().subscribe({
     next:(data) =>{
-      this.arrgo = data;
+      this.arrgo = data
       console.log('Carga los elementos de client');
     },error:(error) =>{
       console.error('Error carga', error);

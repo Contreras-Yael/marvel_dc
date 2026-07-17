@@ -66,12 +66,20 @@ button {
   text-align: center;
   font-style: normal;
   border-radius: 5px;
+  cursor: not-allowed;
   width: 100%;
   border: 1px solid #3ac162;
   border-width: 1px 1px 3px;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
 }
+button:disabled {
+  background-color: #a0a0a0;
+  border-color: #8c8c8c;
+  color: #e0e0e0;
+  box-shadow: none;
+}
+
 
 fieldset {
   margin-bottom: 30px;
@@ -143,4 +151,12 @@ label.light {
   width: 100%;
   max-width: 100%;
   margin-bottom: 5px;
+}
+
+
+.field div span {
+  color: #dc3545;
+  font-size: 20px;
+  margin-top: 4px;
+  display: block;
 }

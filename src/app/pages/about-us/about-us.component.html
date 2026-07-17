@@ -3,7 +3,7 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
   <div class="field" style="cursor: pointer;">
-    <label for="name">Nombre:</label>
+    <label for="name">Nombre: <span class="required">*</span></label>
     <input type="text" id="name" formControlName="name"/>
 
     <div *ngIf="formulario.get('name')?.invalid && formulario.get('name')?.touched">
@@ -81,7 +81,7 @@
   <div class="section-biography" formGroupName="biography">
 
     <div class="field">
-      <label for="full-name">Nombre completo:</label>
+      <label for="full-name">Nombre completo: <span class="required">*</span></label>
       <input type="text" id="full-name" formControlName="full-name"/>
       <div *ngIf="formulario.get('biography.full-name')?.invalid && formulario.get('biography.full-name')?.touched">
         <span *ngIf="formulario.get('biography.full-name')?.errors?.['required']">Nombre completo obligatorio</span>
@@ -90,7 +90,7 @@
     </div>
 
     <div class="field">
-      <label for="alter-egos">Alter egos:</label>
+      <label for="alter-egos">Alter egos:  <span class="required">*</span></label>
       <input type="text" id="alter-egos" formControlName="alter-egos"/>
       <div *ngIf="formulario.get('biography.alter-egos')?.invalid && formulario.get('biography.alter-egos')?.touched">
         <span *ngIf="formulario.get('biography.alter-egos')?.errors?.['required']">Alter egos obligatorio</span>
@@ -164,7 +164,7 @@
   <div class="section-work" formGroupName="work">
 
     <div class="field">
-      <label for="occupation">Ocupacion:</label>
+      <label for="occupation">Ocupacion:  <span class="required">*</span></label>
       <input type="text" id="occupation" formControlName="occupation"/>
       <div *ngIf="formulario.get('work.occupation')?.invalid && formulario.get('work.occupation')?.touched">
         <span *ngIf="formulario.get('work.occupation')?.errors?.['required']">Ocupación obligatoria</span>
@@ -190,7 +190,7 @@
 
 </div>
 
-  <button type="submit" style="cursor:pointer;" [disabled]="formulario.invalid" class="btn-enviar">
+  <button type="submit" style="cursor:pointer;" class="btn-enviar">
     Enviar Datos
   </button>
 

@@ -1,37 +1,74 @@
 <h2>Ranking de héroes</h2>
 
-<div class="ranking-botones">
- <button type="button" (click)="historial.cambioranki('total')">
-    Total
-  </button>
+<!-- Reemplazamos 'ranking-botones' por la estructura Nav Pills de Bootstrap -->
+<div class="nav nav-pills gap-1 my-3 justify-content-center">
 
-  <button type="button" (click)="historial.cambioranki('intelligence')">
-    Inteligencia
-  </button>
+  <div class="nav-item">
+    <button type="button"
+      class="nav-link"
+      [class.active]="historial.ranking() === 'total'"
+      (click)="historial.cambioranki('total')">
+      Total
+    </button>
+  </div>
 
-  <button type="button" (click)="historial.cambioranki('strength')">
-    Fuerza
-  </button>
+  <div class="nav-item">
+    <button type="button"
+      class="nav-link"
+      [class.active]="historial.ranking() === 'intelligence'"
+      (click)="historial.cambioranki('intelligence')">
+      Inteligencia
+    </button>
+  </div>
 
-  <button type="button" (click)="historial.cambioranki('speed')">
-    Velocidad
-  </button>
+  <div class="nav-item">
+    <button type="button"
+      class="nav-link"
+      [class.active]="historial.ranking() === 'strength'"
+      (click)="historial.cambioranki('strength')">
+      Fuerza
+    </button>
+  </div>
 
-  <button type="button" (click)="historial.cambioranki('durability')">
-    Durabilidad
-  </button>
+  <div class="nav-item">
+    <button type="button"
+      class="nav-link"
+      [class.active]="historial.ranking() === 'speed'"
+      (click)="historial.cambioranki('speed')">
+      Velocidad
+    </button>
+  </div>
 
-  <button type="button" (click)="historial.cambioranki('power')">
-    Poder
-  </button>
+  <div class="nav-item">
+    <button type="button"
+      class="nav-link"
+      [class.active]="historial.ranking() === 'durability'"
+      (click)="historial.cambioranki('durability')">
+      Durabilidad
+    </button>
+  </div>
 
-  <button type="button" (click)="historial.cambioranki('combat')">
-    Combate
-  </button>
+  <div class="nav-item">
+    <button type="button"
+      class="nav-link"
+      [class.active]="historial.ranking() === 'power'"
+      (click)="historial.cambioranki('power')">
+      Poder
+    </button>
+  </div>
+
+  <div class="nav-item">
+    <button type="button"
+      class="nav-link"
+      [class.active]="historial.ranking() === 'combat'"
+      (click)="historial.cambioranki('combat')">
+      Combate
+    </button>
+  </div>
+
 </div>
 
 <h3>Ranking actual: {{ historial.ranking() }}</h3>
-
 
 @if (historial.rankingin().length > 0) {
   <div class="ranking-lista">

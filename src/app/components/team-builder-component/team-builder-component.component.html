@@ -9,8 +9,10 @@
        <card-hero
         [carta]="fav"
         (favorito)="fav"
+        [tipo]="'2'"
         (team)="fav"
-        [boton]="false"
+        [boton]="true"
+        (favorito)="historialbusc.addfav($event)"
         ></card-hero>
       </div>
       }
@@ -28,9 +30,10 @@
        <card-hero
         [carta]="team"
         (favorito)="team"
+        [tipo]="'3'"
         (team)="team"
-        [boton]="false"
-
+        [boton]="true"
+        (team)="historialbusc.addteam($event, true)"
         ></card-hero>
         </div>
       }

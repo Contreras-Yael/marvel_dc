@@ -20,10 +20,6 @@
   margin: 0 auto;
 }
 
-.card {
-  width: 100%;
-  max-width: 320px;
-}
 
 .cuadro {
   display: flex;

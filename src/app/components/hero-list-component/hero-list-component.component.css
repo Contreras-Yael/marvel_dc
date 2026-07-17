@@ -17,3 +17,15 @@
 .paginacion button:hover {
   background-color: #0056b3;
 }
+ .mosaico {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 5px;
+  width: 50%;
+  justify-items: center
+}
+
+
+
+

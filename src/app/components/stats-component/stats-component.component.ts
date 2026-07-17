@@ -6,7 +6,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
   selector: 'stats-co',
   imports: [],
   templateUrl: './stats-component.component.html',
-  styleUrl: './stats-component.component.css'
+  styleUrl: './stats-component.component.css',
 })
 export class StatsComponent {
 

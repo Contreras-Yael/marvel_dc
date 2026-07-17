@@ -5,6 +5,7 @@ import {FormGroup,FormControl,Validator, Validators} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HttpServiceService } from '../../services/http-service.service';
 import { environment } from '../../../environments/environment.development';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'about-us-page',
@@ -55,7 +56,10 @@ formulario = new FormGroup({
       Validators.max(100),
     ]),
   }),
-
+//Deficiencia en estilo, marcar lo que si es 100 necesario,
+// 1. campos requeridos aasterico rojo
+//2 ciclo de vida, se ejecute cuando cargo todo, correr solo el marker as touched, correr solo esa linea
+// pintara lo requerido, ciclo de vida
   biography: new FormGroup({
     'full-name': new FormControl('', [
       Validators.required,
@@ -101,11 +105,23 @@ onFileSelected(event: any) {
 }
 onSubmit() {
   const endpo = environment.endpoints.saveHero;
-  if (this.formulario.invalid) return;
+  if (this.formulario.invalid) {
+    this.formulario.markAllAsTouched();
+    Swal.fire({
+      icon: 'warning',
+      title: 'Error',
+      text: 'Faltan campos requeridos, por favor complete el formulario.',
+    })
+    return};
   if (this.image) {
     const formatosPermitidos = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
     if (!formatosPermitidos.includes(this.image.type)) {
-      alert('Solo se permiten formatos PNG, JPG, JPEG o GIF, el resto no es valido, use otra imagen.');
+      //alert('Solo se permiten formatos PNG, JPG, JPEG o GIF, el resto no es valido, use otra imagen.');
+      Swal.fire({
+      icon: 'warning',
+      title: 'Error',
+      text: 'Formatos de imagen no permitidos, solo png, jpg, jpeg o gif.',
+    })
       return;
     }
   }
@@ -123,22 +139,38 @@ onSubmit() {
 
         this.lineservice.updatehero(enpofot, multimedia).subscribe({
           next: (resMultimedia) => {
-            alert('Se guardó correctamente el personaje y su imagen');
+            Swal.fire({
+              icon: 'success',
+              title: 'Éxito',
+              text: 'Se guardó correctamente el personaje y su imagen',
+            });
             this.eraseform();
           },
           error: (errMulti) => {
             console.error('Fallo el guardado:', errMulti);
-            alert('Se creo pero no se subio al servidor la imagen.');
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Se creo pero no se subio al servidor la imagen.',
+            });
           }
         });
       } else {
-        alert('Se guardó correctamente el personaje, no tiene imagen');
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: 'Se guardó correctamente el personaje, no tiene imagen',
+        });
         this.eraseform();
       }
     },
     error: (err) => {
       console.error('No se pudo subir el formulario', err);
-      alert('No se logró subir el formulario');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se logró subir el formulario',
+      });
     }
   });
 }

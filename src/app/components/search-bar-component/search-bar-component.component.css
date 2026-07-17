@@ -1,4 +1,6 @@
 .conta{
+  margin-left: 18px;
+  margin-top: 18px;
   display: flex;
   gap: 10px;
   justify-content: flex-end;

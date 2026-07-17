@@ -236,7 +236,7 @@ public rankingin = computed(()=>{
     const exis = this.favl().find(h => h.id === favh.id);
     if(exis){
       this.favl.set(this.favl().filter(h => h.id !== favh.id));
-      console.log("prueba", favh.name);
+      console.log("prueba remocion", favh.name);
     }else{
       this.favl.set([...this.favl(), favh]);
       console.log("prueba 2, agregado", favh.name)
@@ -249,31 +249,64 @@ public rankingin = computed(()=>{
 }
 
 //======
-  addteam(teamh:any){
+  // addteam(teamh:any){
+  //   const exis = this.team().find(h => h.id === teamh.id);
+  //   const teamli = Array.from(this.team() || []);
+  //   if(exis){
+  //     alert("ya existe");
+
+  //     return;
+  //   }
+  //   if(this.team().length >= 5){
+  //     alert("El equipo esta lleno");
+  //     return;
+  //   }
+
+  //   teamli.push(teamh);
+  //   this.team.set(teamli);
+
+  //   localStorage.setItem('team', JSON.stringify(this.team()));
+  // }
+
+    addteam(teamh: any, eliminar: boolean = false) {
     const exis = this.team().find(h => h.id === teamh.id);
     const teamli = Array.from(this.team() || []);
-    if(exis){
-      alert("ya existe");
-    return;
+
+    if (eliminar) {
+      this.team.set(this.team().filter(h => h.id !== teamh.id));
+      localStorage.setItem('team', JSON.stringify(this.team()));
+
+      console.log("Eliminado siuu", teamh.name);
+
+      return;
     }
-    if(this.team().length >= 5){
+    if (exis) {
+      alert("ya existe");
+      return;
+    }
+    if (this.team().length >= 5) {
       alert("El equipo esta lleno");
       return;
     }
-
     teamli.push(teamh);
-
     this.team.set(teamli);
-
     localStorage.setItem('team', JSON.stringify(this.team()));
+    console.log("Agregado al equipo:", teamh.name);
   }
+
 
   teamlist(){
     return this.team();
   }
+
+  favaloc(heroeId: string): boolean {
+  if (!heroeId) return false;
+  return this.favl().some(h => (h.id || h._id) === heroeId);
 }
 
+  teamloc(heroeId: string): boolean {
+  if (!heroeId) return false;
+  return this.team().some(h => (h.id || h._id) === heroeId);
+}
 
-
-
-
+}

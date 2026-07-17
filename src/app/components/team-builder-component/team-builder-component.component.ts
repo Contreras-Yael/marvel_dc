@@ -1,5 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { HeroCardComponent } from "../hero-card-component/hero-card-component.component";
+import { LocalStorageService } from '../../services/local-storage.service';
 // import { ApiheroService } from '../../services/apihero.service';
 
 @Component({
@@ -10,6 +11,9 @@ import { HeroCardComponent } from "../hero-card-component/hero-card-component.co
 })
 export class TeamBuilderComponent {
   // private listhero  = inject(ApiheroService);
+
+  public historialbusc = inject(LocalStorageService);
+
 
   @Input() favlist: any[] = [];
   @Input() teamlist: any[]=[];

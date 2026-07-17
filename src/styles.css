@@ -1,12 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-
-
-.mosaico{
+/* .mosaico{
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 20px;
   padding: 20px;
-}
+} */
 
 
 .DC{
@@ -23,3 +21,4 @@ color: rgb(243, 57, 57);
 color: rgb(144, 57, 243);
 
 }
+
