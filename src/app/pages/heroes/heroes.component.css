@@ -28,6 +28,9 @@
 .eliminacion {
   background-color: aquamarine;
 }
+.edicion {
+  background-color: rgb(217, 169, 37);
+}
 
 .modal-fondo {
   position: fixed;
@@ -61,4 +64,8 @@
 
 .botones-modal button {
   width: 100%;
+}
+.botones-sec{
+  margin-left: 30px;
+  gap: 20px;;
 }
